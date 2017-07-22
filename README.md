@@ -1,2 +1,1 @@
-# euclidea
-euclidea notes
+[link](http://aoyama-nanami.github.io/euclidea)
