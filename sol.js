@@ -1,81 +1,9 @@
-class Board {
-    constructor(id, xmin, xmax, ymin, ymax, zoom) {
-        var container = $('#' + id);
-        var board = $('<div></div>');
-        board.addClass('jxgbox');
-        board.css({
-            width: (xmax - xmin) * zoom + 'px',
-            height: (ymax - ymin) * zoom + 'px',
-        })
-        board.attr('id', id + '_board');
-
-        var prev = $('<button>&lt;&lt;</button>').click(() => this.prev());
-        var next = $('<button>&gt;&gt;</button>').click(() => this.next());
-        container.append(board, prev, ' ', next);
-
-        this.board_ = JXG.JSXGraph.initBoard(board.attr('id'), 
-            {
-                boundingbox: [xmin, ymax, xmax, ymin],
-                showNavigation: false,
-                zoom: false,
-            });
-        this.stack_ = [];
-        this.elements_ = [];
-    }
-
-    push(elementType, parents, name = undefined, attributes = {}) {
-        this.stack_.push([elementType, parents, name, attributes]);
-    }
-
-    createAll() {
-        for (const x of this.stack_) {
-            let [elementType, parents, name, attributes] = x;
-            let e = this.create(elementType, parents, name, attributes);
-            this.elements_.push(e);
-        }
-    }
-
-    create(elementType, parents, name, attributes = {}) {
-        var e = this.board_.create(elementType, parents.slice(), attributes);
-        e.setName(name);
-        return e;
-    }
-
-    prev() {
-        while (true) {
-            let e = this.elements_.pop();
-            if (e !== undefined) {
-                this.board_.removeObject(e);
-                if (!(e.getType() == 'intersection' || e.getType() == 'otherintersection')) {
-                    break;
-                }
-            } else {
-                break;
-            }
-        }
-    }
-
-    next() {
-        while (true) {
-            let n = this.elements_.length;
-            if (n == this.stack_.length) break;
-            let [elementType, parents, name, attributes] = this.stack_[n];
-            let e = this.create(elementType, parents, name, attributes);
-            this.elements_.push(e);
-            if (!(elementType == 'intersection' || elementType == 'otherintersection')) {
-                break;
-            }
-        }
-    }
-};
-
-
-function Alpha7(id) {
-    var board = new Board(id, -4, 3, -1.5, 2.5, 100);
+function Alpha7(e) {
+    var board = new Board(e, -3, 3, -1.5, 2.5, 100);
 
     // input
-    board.create('point', [0, 0], 'O', {color: 'blue', withLabel: true});
-    board.create('point', [0, 1], 'A', {color: 'blue', withLabel: true});
+    board.create('point', [0, 0], 'O', {color: 'blue'});
+    board.create('point', [0, 1], 'A', {color: 'blue'});
     board.create('circle', ['O', 'A'], 'C1', {strokeColor: 'blue'});
 
     // steps
@@ -99,13 +27,6 @@ function Alpha7(id) {
     board.createAll();
 }
 
-function SetDefaultOptions() {
-    JXG.Options.point.size = 1;
-    JXG.Options.point.strokeColor = 'darkgrey';
-    JXG.Options.point.fillColor = 'darkgrey';
-    JXG.Options.point.withLabel = false;
-    JXG.Options.circle.strokeColor = 'darkgrey';
-    JXG.Options.line.strokeColor = 'darkgrey';
+function Delta9(e) {
 }
 
-SetDefaultOptions();
