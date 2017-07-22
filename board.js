@@ -5,6 +5,10 @@ class Board {
         return 'board_' + Board.counter_;
     }
 
+    static IsPointType_(type) {
+        return type == 'intersection' || type == 'otherintersection' || type == 'glider';
+    }
+
     constructor(container, xmin, xmax, ymin, ymax, zoom) {
         var board = $('<div></div>');
         board.addClass('jxgbox');
@@ -51,7 +55,7 @@ class Board {
             let e = this.elements_.pop();
             if (e !== undefined) {
                 this.board_.removeObject(e);
-                if (!(e.getType() == 'intersection' || e.getType() == 'otherintersection')) {
+                if (!Board.IsPointType_(e.getType())) {
                     break;
                 }
             } else {
@@ -67,9 +71,7 @@ class Board {
             let [elementType, parents, name, attributes] = this.stack_[n];
             let e = this.create(elementType, parents, name, attributes);
             this.elements_.push(e);
-            if (!(elementType == 'intersection' || elementType == 'otherintersection')) {
-                break;
-            }
+            if (!Board.IsPointType_(elementType)) break;
         }
     }
 };
@@ -81,8 +83,16 @@ function SetDefaultOptions() {
     JXG.Options.point.strokeColor = 'darkgrey';
     JXG.Options.point.fillColor = 'darkgrey';
     JXG.Options.point.withLabel = false;
+
     JXG.Options.circle.strokeColor = 'darkgrey';
+
     JXG.Options.line.strokeColor = 'darkgrey';
+
+    JXG.Options.elements.fixed = true;
+
+    JXG.Options.glider.fixed = false;
+    JXG.Options.glider.strokeColor = 'red';
+    JXG.Options.glider.fillColor = 'red';
 }
 
 SetDefaultOptions();

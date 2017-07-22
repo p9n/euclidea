@@ -27,6 +27,57 @@ function Alpha7(e) {
     board.createAll();
 }
 
+function Delta2(e) {
+    var board = new Board(e, -3, 3, -2, 3, 100);
+
+    // input
+    board.create('point', [0, 1], 'A', {color: 'blue'});
+    board.create('line', [[-1, 0], [1, 0]], 'L1', {strokeColor: 'blue'});
+
+    // steps
+    board.push('glider', [-1, 0, 'L1'], 'B');
+    board.push('circle', ['A', 'B'], 'C1');
+    board.push('circle', ['B', 'A'], 'C2');
+    board.push('intersection', ['C2', 'L1', 0], 'I1');
+    board.push('intersection', ['C1', 'C2', 1], 'I2');
+    board.push('circle', ['I1', 'I2'], 'C3');
+    board.push('otherintersection', ['C1', 'C3', 'I2'], 'I3');
+
+    // solution
+    board.push('line', ['A', 'I3'], 'L2', {color: 'darkorange'});
+    board.push('intersection', ['L1', 'L2'], 'I4', {color: 'darkorange'});
+    board.push('line', [[-1, 0], 'I4'], 'L3', {straightLast: false, color: 'darkorange'});
+
+    board.createAll();
+}
+
+function Delta4(e) {
+    var board = new Board(e, -3, 3, -2, 1.5, 100);
+
+    // input
+    board.create('circle', [[0, 0], [0, 1]], 'C1', {strokeColor: 'blue'});
+    board.create('point', [1, 0], 'A', {color: 'blue'});
+
+    // steps
+    board.push('glider', [0.91, -0.41, 'C1'], 'B');
+    board.push('circle', ['B', 'A'], 'C2');
+    board.push('otherintersection', ['C1', 'C2', 'A'], 'I1-2');
+    board.push('circle', ['A', 'I1-2'], 'C3');
+    board.push('otherintersection', ['C2', 'C3', 'I1-2'], 'I2-3');
+    board.push('circle', ['I2-3', 'A'], 'C4');
+
+    // solution
+    board.push('intersection', ['C3', 'C4'], 'I3-4');
+    board.push('otherintersection', ['C3', 'C4', 'I3-4'], 'I3-4-other');
+    board.push('line', ['A', 'I3-4'], 'L1', {color: 'darkorange'});
+    board.push('line', ['A', 'I3-4-other'], 'L2', {color: 'darkorange'});
+    board.push('otherintersection', ['C1', 'L1', 'A'], 'I-C1-L1');
+    board.push('otherintersection', ['C1', 'L2', 'A'], 'I-C1-L2');
+    board.push('line', ['I-C1-L1', 'I-C1-L2'], 'L3', {color: 'darkorange'});
+
+    board.createAll();
+}
+
 function Delta9(e) {
     var board = new Board(e, -2, 3.5, -2.5, 3, 100);
 
