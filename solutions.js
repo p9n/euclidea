@@ -1,4 +1,6 @@
-function Alpha7(e) {
+import {Board} from "./board.js";
+
+export function Alpha7(e) {
     var board = new Board(e, -3, 3, -1.5, 2.5, 100);
 
     // input
@@ -27,7 +29,7 @@ function Alpha7(e) {
     board.createAll();
 }
 
-function Delta2(e) {
+export function Delta2(e) {
     var board = new Board(e, -3, 3, -2, 3, 100);
 
     // input
@@ -51,7 +53,7 @@ function Delta2(e) {
     board.createAll();
 }
 
-function Delta4(e) {
+export function Delta4(e) {
     var board = new Board(e, -3, 3, -2, 1.5, 100);
 
     // input
@@ -78,7 +80,7 @@ function Delta4(e) {
     board.createAll();
 }
 
-function Delta9(e) {
+export function Delta9(e) {
     var board = new Board(e, -2, 3.5, -2.5, 3, 100);
 
     // input
@@ -115,3 +117,23 @@ function Delta9(e) {
     board.createAll();
 }
 
+export function Epsilon3(e) {
+    var board = new Board(e, -1.5, 2.5, -1.5, 1.5, 100);
+
+    // input
+    board.create('point', [0, 0], 'A', {color: 'blue'});
+    board.create('point', [1, 0], 'B', {color: 'blue'});
+    board.create('point', [-0.55, 1.1], 'C', {color: 'blue', withLabel: true});
+
+    // steps
+    board.push('circle', ['A', 'C'], 'C1');
+    board.push('line', ['A', 'C'], 'L1');
+    board.push('otherintersection', ['C1', 'L1', 'C'], 'I1');
+    board.push('circle', ['B', 'I1'], 'C2');
+    board.push('otherintersection', ['C1', 'C2', 'I1'], 'I2');
+
+    // solution
+    board.push('line', ['C', 'I2'], 'L2', {color: 'darkorange'});
+
+    board.createAll();
+}

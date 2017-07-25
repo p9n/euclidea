@@ -1,6 +1,9 @@
+import * as Solutions from "./solutions.js";
+import * as Board from "./board.js";
+
 function InitButtons() {
     $('h3').each((index, element) => {
-        let sol = eval($(element).attr('data-solution'));
+        let sol = Solutions[$(element).attr('data-solution')];
         let container = $('<div></div>');
         let button = $('<button>show</button>').click((e) => HandleClick(e, sol, container));
         $(element).append(' ', button);
@@ -19,3 +22,4 @@ function HandleClick(e, sol, container) {
 }
 
 $(document).ready(InitButtons);
+$(document).ready(Board.SetDefaultOptions());

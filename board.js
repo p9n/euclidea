@@ -1,4 +1,4 @@
-class Board {
+export class Board {
     static UniqueId_() {
         // TODO: improve this
         Board.counter_ += 1;
@@ -78,7 +78,7 @@ class Board {
 
 Board.counter_ = 0;
 
-function SetDefaultOptions() {
+export function SetDefaultOptions() {
     JXG.Options.point.size = 1;
     JXG.Options.point.strokeColor = 'darkgrey';
     JXG.Options.point.fillColor = 'darkgrey';
@@ -94,5 +94,3 @@ function SetDefaultOptions() {
     JXG.Options.glider.strokeColor = 'red';
     JXG.Options.glider.fillColor = 'red';
 }
-
-SetDefaultOptions();
