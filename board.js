@@ -1,15 +1,23 @@
 var POINT_SUBTYPES = new Set(
     ['glider', 'intersection', 'otherintersection', 'point'])
 
+function isPointType(type) {
+    return POINT_SUBTYPES.has(type)
+}
+
+function colorAttribute(type, color) {
+    if (isPointType(type)) {
+        return {'color': color};
+    } else {
+        return {'strokeColor': color};
+    }
+}
+
 export class Board {
     static UniqueId_() {
         // TODO: improve this
         Board.counter_ += 1;
         return 'board_' + Board.counter_;
-    }
-
-    static IsPointType_(type) {
-        return POINT_SUBTYPES.has(type)
     }
 
     constructor(container, xmin, xmax, ymin, ymax, zoom) {
@@ -36,7 +44,9 @@ export class Board {
     }
 
     init(elementType, parents, name = undefined, attributes = {}) {
-        this.create(elementType, parents, name, attributes)
+        var defaultColor = colorAttribute(elementType, 'blue')
+        var combinedAttribute = Object.assign({}, defaultColor, attributes);
+        this.create(elementType, parents, name, combinedAttribute);
     }
 
     step(elementType, parents, name = undefined, attributes = {}) {
@@ -62,7 +72,7 @@ export class Board {
             let e = this.elements_.pop();
             if (e !== undefined) {
                 this.board_.removeObject(e);
-                if (!Board.IsPointType_(e.getType())) {
+                if (!isPointType(e.getType())) {
                     break;
                 }
             } else {
@@ -78,7 +88,7 @@ export class Board {
             let [elementType, parents, name, attributes] = this.stack_[n];
             let e = this.create(elementType, parents, name, attributes);
             this.elements_.push(e);
-            if (!Board.IsPointType_(elementType)) break;
+            if (!isPointType(elementType)) break;
         }
     }
 };

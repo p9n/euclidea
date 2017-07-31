@@ -4,9 +4,9 @@ export function Alpha7(e) {
     var board = new Board(e, -3, 3, -1.5, 2.5, 100);
 
     // input
-    board.init('point', [0, 0], 'O', {color: 'blue'});
-    board.init('point', [0, 1], 'A', {color: 'blue'});
-    board.init('circle', ['O', 'A'], 'C1', {strokeColor: 'blue'});
+    board.init('point', [0, 0], 'O');
+    board.init('point', [0, 1], 'A');
+    board.init('circle', ['O', 'A'], 'C1');
 
     // steps
     board.step('circle', ['A', 'O'], 'C2');
@@ -33,8 +33,8 @@ export function Delta2(e) {
     var board = new Board(e, -3, 3, -2, 3, 100);
 
     // input
-    board.init('point', [0, 1], 'A', {color: 'blue'});
-    board.init('line', [[-1, 0], [1, 0]], 'L1', {strokeColor: 'blue'});
+    board.init('point', [0, 1], 'A');
+    board.init('line', [[-1, 0], [1, 0]], 'L1');
 
     // steps
     board.step('glider', [-1, 0, 'L1'], 'B');
@@ -57,8 +57,8 @@ export function Delta4(e) {
     var board = new Board(e, -3, 3, -2, 1.5, 100);
 
     // input
-    board.init('circle', [[0, 0], [0, 1]], 'C1', {strokeColor: 'blue'});
-    board.init('point', [1, 0], 'A', {color: 'blue'});
+    board.init('circle', [[0, 0], [0, 1]], 'C1');
+    board.init('point', [1, 0], 'A');
 
     // steps
     board.step('glider', [0.91, -0.41, 'C1'], 'B');
@@ -84,8 +84,8 @@ export function Delta9(e) {
     var board = new Board(e, -2, 3.5, -2.5, 3, 100);
 
     // input
-    board.init('point', [0.5, 0.5], 'A', {color: 'blue'});
-    board.init('point', [-0.5, -0.5], 'B', {color: 'blue'});
+    board.init('point', [0.5, 0.5], 'A');
+    board.init('point', [-0.5, -0.5], 'B');
 
     // steps
     board.step('circle', ['A', 'B'], 'C1');
@@ -121,9 +121,9 @@ export function Epsilon3(e) {
     var board = new Board(e, -1.5, 2.5, -1.5, 1.5, 100);
 
     // input
-    board.init('point', [0, 0], 'A', {color: 'blue'});
-    board.init('point', [1, 0], 'B', {color: 'blue'});
-    board.init('point', [-0.55, 1.1], 'C', {color: 'blue', withLabel: true});
+    board.init('point', [0, 0], 'A');
+    board.init('point', [1, 0], 'B');
+    board.init('point', [-0.55, 1.1], 'C', {withLabel: true});
 
     // steps
     board.step('circle', ['A', 'C'], 'C1');
@@ -142,17 +142,17 @@ export function Epsilon5(e) {
     var board = new Board(e, -0.5, 3.5, -0.5, 2, 100);
 
     // input
-    board.init('point', [0, 0], 'A', {color: 'blue'});
-    board.init('point', [3, 0], 'B', {color: 'blue'});
-    board.init('point', [2.34, 1.5], 'C', {color: 'blue'});
-    board.init('point', [1.22, 1.5], 'D', {color: 'blue'});
-    board.init('segment', ['A', 'B'], 'LAB', {strokeColor: 'blue'})
-    board.init('segment', ['B', 'C'], 'LBC', {strokeColor: 'blue'})
-    board.init('segment', ['C', 'D'], 'LCD', {strokeColor: 'blue'})
-    board.init('segment', ['D', 'A'], 'LDA', {strokeColor: 'blue'})
+    board.init('point', [0, 0], 'A');
+    board.init('point', [3, 0], 'B');
+    board.init('point', [2.34, 1.5], 'C');
+    board.init('point', [1.22, 1.5], 'D');
+    board.init('segment', ['A', 'B'], 'LAB')
+    board.init('segment', ['B', 'C'], 'LBC')
+    board.init('segment', ['C', 'D'], 'LCD')
+    board.init('segment', ['D', 'A'], 'LDA')
 
     // steps
-    board.step('glider', [0.93, 1.14, 'LDA'], 'O1', {fixed: true, color: 'grey'})
+    board.step('glider', [0.93, 1.14, 'LDA'], 'O1', {fixed: true, color: 'darkgrey'})
     board.step('circle', ['O1', 'D'], 'C1')
     board.step('otherintersection', ['C1', 'LDA', 'O1'], 'O2')
     board.step('circle', ['O2', 'D'], 'C2')
