@@ -46,9 +46,10 @@ export function Delta2(e) {
     board.step('otherintersection', ['C1', 'C3', 'I2'], 'I3');
 
     // solution
-    board.step('line', ['A', 'I3'], 'L2', {color: 'darkorange'});
+    board.step('line', ['A', 'I3'], 'L2');
     board.step('intersection', ['L1', 'L2'], 'I4', {color: 'darkorange'});
-    board.step('line', [[-1, 0], 'I4'], 'L3', {straightLast: false, color: 'darkorange'});
+    board.step('line', ['A', 'I4'], '', {straightLast: false, color: 'darkorange'});
+    board.step('line', ['B', 'I4'], '', {straightLast: false, color: 'darkorange'});
 
     board.renderAll();
 }
@@ -144,27 +145,71 @@ export function Epsilon5(e) {
     // input
     board.init('point', [0, 0], 'A');
     board.init('point', [3, 0], 'B');
+    board.init('segment', ['A', 'B'], 'LAB');
     board.init('point', [2.34, 1.5], 'C');
-    board.init('point', [1.22, 1.5], 'D');
-    board.init('segment', ['A', 'B'], 'LAB')
-    board.init('segment', ['B', 'C'], 'LBC')
-    board.init('segment', ['C', 'D'], 'LCD')
-    board.init('segment', ['D', 'A'], 'LDA')
+    board.init('parallel', ['LAB', 'C'], 'LCD_hidden', {visible: false});
+    board.init('glider', [1.22, 1.5, 'LCD_hidden'], 'D');
+    board.init('segment', ['B', 'C'], 'LBC');
+    board.init('segment', ['C', 'D'], 'LCD');
+    board.init('segment', ['D', 'A'], 'LDA');
 
     // steps
-    board.step('glider', [0.93, 1.14, 'LDA'], 'O1', {fixed: true, color: 'darkgrey'})
-    board.step('circle', ['O1', 'D'], 'C1')
-    board.step('otherintersection', ['C1', 'LDA', 'O1'], 'O2')
-    board.step('circle', ['O2', 'D'], 'C2')
-    board.step('intersection', ['C2', 'LAB', 0], 'E')
-    board.step('intersection', ['C2', 'LAB', 1], 'F')
-    board.step('line', ['D', 'E'], 'L1')
-    board.step('line', ['D', 'F'], 'L2')
-    board.step('otherintersection', ['C1', 'L1', 'D'], 'G')
-    board.step('otherintersection', ['C1', 'L2', 'D'], 'H')
+    board.step('glider', [0.93, 1.14, 'LDA'], 'O1');
+    board.step('circle', ['O1', 'D'], 'C1');
+    board.step('otherintersection', ['C1', 'LDA', 'O1'], 'O2');
+    board.step('circle', ['O2', 'D'], 'C2');
+    board.step('intersection', ['C2', 'LAB', 0], 'E');
+    board.step('intersection', ['C2', 'LAB', 1], 'F');
+    board.step('line', ['D', 'E'], 'L1');
+    board.step('line', ['D', 'F'], 'L2');
+    board.step('otherintersection', ['C1', 'L1', 'D'], 'G');
+    board.step('otherintersection', ['C1', 'L2', 'D'], 'H');
 
     // solution
     board.step('line', ['G', 'H'], 'L3', {color: 'darkorange'});
+
+    board.renderAll();
+}
+
+export function Epsilon8(e) {
+    var board = new Board(e, -3, 3, -2.5, 3.5, 100);
+
+    // input
+    board.init('line', [[0, 0], [1, 0]], 'L1');
+    board.init('point', [0, 1.5], 'O');
+    board.init('point', [0.6, 1.5], 'P');
+    board.init('circle', ['O', 'P'], 'C1');
+
+    // steps
+    board.step('glider', [-1.6, 0, 'L1'], 'A');
+    board.step('circle', ['A', 'O'], 'C2');
+    board.step('glider', [0.9, 0, 'L1'], 'B');
+    board.step('circle', ['B', 'O'], 'C3');
+    board.step('otherintersection', ['C2', 'C3', 'O'], 'C');
+    board.step('line', ['O', 'C'], 'L2');
+    board.step('intersection', ['L1', 'L2'], 'D');
+    board.step('circle', ['D', 'O'], 'C4');
+    board.step('intersection', ['C4', 'L1', 0], 'E');
+    board.step('line', ['E', 'O'], 'L3');
+    board.step('intersection', ['C1', 'L2', 0], 'F');
+    board.step('intersection', ['C1', 'L2', 1], 'G');
+    board.step('circle', ['F', 'O'], 'C5')
+    board.step('circle', ['G', 'O'], 'C6')
+    board.step('otherintersection', ['L3', 'C5', 'O'], 'H');
+    board.step('otherintersection', ['L3', 'C6', 'O'], 'I');
+    board.step('line', ['F', 'H'], 'L4');
+    board.step('otherintersection', ['L4', 'C5', 'H'], 'J');
+    board.step('line', ['J', 'I'], 'L5');
+    board.step('line', ['I', 'G'], 'L6');
+    board.step('otherintersection', ['L6', 'C6', 'I'], 'K');
+    board.step('line', ['K', 'H'], 'L7');
+
+    // solution
+    board.step('segment', ['H', 'J'], '', {color: 'darkorange'});
+    board.step('segment', ['I', 'J'], '', {color: 'darkorange'});
+    board.step('segment', ['I', 'K'], '', {color: 'darkorange'});
+    board.step('segment', ['H', 'K'], '', {color: 'darkorange'});
+
 
     board.renderAll();
 }

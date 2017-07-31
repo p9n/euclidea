@@ -1,3 +1,5 @@
+var DEBUG = false;
+
 var POINT_SUBTYPES = new Set(
     ['glider', 'intersection', 'otherintersection', 'point'])
 
@@ -7,9 +9,9 @@ function isPointType(type) {
 
 function colorAttribute(type, color) {
     if (isPointType(type)) {
-        return {'color': color};
+        return {color: color};
     } else {
-        return {'strokeColor': color};
+        return {strokeColor: color};
     }
 }
 
@@ -68,6 +70,7 @@ export class Board {
     }
 
     prev() {
+        // TODO: skip all orange steps
         while (true) {
             let e = this.elements_.pop();
             if (e !== undefined) {
@@ -105,9 +108,11 @@ export function SetDefaultOptions() {
 
     JXG.Options.line.strokeColor = 'darkgrey';
 
-    JXG.Options.elements.fixed = true;
-
-    JXG.Options.glider.fixed = false;
     JXG.Options.glider.strokeColor = 'red';
     JXG.Options.glider.fillColor = 'red';
+
+    if (DEBUG) {
+        JXG.Options.point.withLabel = true;
+        JXG.Options.geometryElement.withLabel = true;
+    }
 }
