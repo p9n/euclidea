@@ -137,3 +137,34 @@ export function Epsilon3(e) {
 
     board.createAll();
 }
+
+export function Epsilon5(e) {
+    var board = new Board(e, -0.5, 3.5, -0.5, 2, 100);
+
+    // input
+    board.create('point', [0, 0], 'A', {color: 'blue'});
+    board.create('point', [3, 0], 'B', {color: 'blue'});
+    board.create('point', [2.34, 1.5], 'C', {color: 'blue'});
+    board.create('point', [1.22, 1.5], 'D', {color: 'blue'});
+    board.create('segment', ['A', 'B'], 'LAB', {strokeColor: 'blue'})
+    board.create('segment', ['B', 'C'], 'LBC', {strokeColor: 'blue'})
+    board.create('segment', ['C', 'D'], 'LCD', {strokeColor: 'blue'})
+    board.create('segment', ['D', 'A'], 'LDA', {strokeColor: 'blue'})
+
+    // steps
+    board.push('glider', [0.93, 1.14, 'LDA'], 'O1', {fixed: true, color: 'grey'})
+    board.push('circle', ['O1', 'D'], 'C1')
+    board.push('otherintersection', ['C1', 'LDA', 'O1'], 'O2')
+    board.push('circle', ['O2', 'D'], 'C2')
+    board.push('intersection', ['C2', 'LAB', 0], 'E')
+    board.push('intersection', ['C2', 'LAB', 1], 'F')
+    board.push('line', ['D', 'E'], 'L1')
+    board.push('line', ['D', 'F'], 'L2')
+    board.push('otherintersection', ['C1', 'L1', 'D'], 'G')
+    board.push('otherintersection', ['C1', 'L2', 'D'], 'H')
+
+    // solution
+    board.push('line', ['G', 'H'], 'L3', {color: 'darkorange'});
+
+    board.createAll();
+}
