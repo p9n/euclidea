@@ -1,3 +1,6 @@
+var POINT_SUBTYPES = new Set(
+    ['glider', 'intersection', 'otherintersection', 'point'])
+
 export class Board {
     static UniqueId_() {
         // TODO: improve this
@@ -6,7 +9,7 @@ export class Board {
     }
 
     static IsPointType_(type) {
-        return type == 'intersection' || type == 'otherintersection' || type == 'glider';
+        return POINT_SUBTYPES.has(type)
     }
 
     constructor(container, xmin, xmax, ymin, ymax, zoom) {
@@ -32,11 +35,15 @@ export class Board {
         this.elements_ = [];
     }
 
-    push(elementType, parents, name = undefined, attributes = {}) {
+    init(elementType, parents, name = undefined, attributes = {}) {
+        this.create(elementType, parents, name, attributes)
+    }
+
+    step(elementType, parents, name = undefined, attributes = {}) {
         this.stack_.push([elementType, parents, name, attributes]);
     }
 
-    createAll() {
+    renderAll() {
         for (const x of this.stack_) {
             let [elementType, parents, name, attributes] = x;
             let e = this.create(elementType, parents, name, attributes);
