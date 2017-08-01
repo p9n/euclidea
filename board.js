@@ -45,25 +45,26 @@ export class Board {
         this.elements_ = [];
     }
 
-    init(elementType, parents, name = undefined, attributes = {}) {
+    init(elementType, parents, name=undefined, attributes = {}) {
         var defaultColor = colorAttribute(elementType, 'blue')
         var combinedAttribute = Object.assign({}, defaultColor, attributes);
         this.create(elementType, parents, name, combinedAttribute);
     }
 
-    step(elementType, parents, name = undefined, attributes = {}) {
-        this.stack_.push([elementType, parents, name, attributes]);
+    step(elementType, parents, name=undefined, attributes = {}, isFinalDecoration=false) {
+        if (isPointType(elementType) || isFinalDecoration) {
+            if (this.stack_.length == 0) this.stack_.push([]);
+        } else {
+            this.stack_.push([]);
+        }
+        this.stack_[this.stack_.length - 1].push([elementType, parents, name, attributes, isFinalDecoration]);
     }
 
     renderAll() {
-        for (const x of this.stack_) {
-            let [elementType, parents, name, attributes] = x;
-            let e = this.create(elementType, parents, name, attributes);
-            this.elements_.push(e);
-        }
+        while (this.next());
     }
 
-    create(elementType, parents, name, attributes = {}) {
+    create(elementType, parents, name, attributes={}) {
         var e = this.board_.create(elementType, parents.slice(), attributes);
         if (name != '') {
             e.setName(name);
@@ -76,29 +77,22 @@ export class Board {
     }
 
     prev() {
-        // TODO: skip all orange steps
-        while (true) {
-            let e = this.elements_.pop();
-            if (e !== undefined) {
-                this.board_.removeObject(e);
-                if (!isPointType(e.getType())) {
-                    break;
-                }
-            } else {
-                break;
-            }
+        let e = this.elements_.pop();
+        if (e !== undefined) {
+            for (let i = e.length - 1; i >= 0; i--) this.board_.removeObject(e[i]);
         }
     }
 
     next() {
-        while (true) {
-            let n = this.elements_.length;
-            if (n == this.stack_.length) break;
-            let [elementType, parents, name, attributes] = this.stack_[n];
-            let e = this.create(elementType, parents, name, attributes);
-            this.elements_.push(e);
-            if (!isPointType(elementType)) break;
+        let n = this.elements_.length;
+        if (n >= this.stack_.length) return false;
+        var nextElementsGroup = [];
+        for (let [elementType, parents, name, attributes, isFinalDecoration] of this.stack_[n]) {
+             let e = this.create(elementType, parents, name, attributes);
+             nextElementsGroup.push(e);
         }
+        this.elements_.push(nextElementsGroup);
+        return true;
     }
 };
 

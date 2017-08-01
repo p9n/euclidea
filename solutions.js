@@ -48,8 +48,8 @@ export function Delta2(e) {
     // solution
     board.step('line', ['A', 'I3'], 'L2');
     board.step('intersection', ['L1', 'L2'], 'I4', {color: 'darkorange'});
-    board.step('line', ['A', 'I4'], '', {straightLast: false, color: 'darkorange'});
-    board.step('line', ['B', 'I4'], '', {straightLast: false, color: 'darkorange'});
+    board.step('line', ['A', 'I4'], '', {straightLast: false, color: 'darkorange'}, true);
+    board.step('line', ['B', 'I4'], '', {straightLast: false, color: 'darkorange'}, true);
 
     board.renderAll();
 }
@@ -171,6 +171,39 @@ export function Epsilon5(e) {
     board.renderAll();
 }
 
+export function Epsilon6(e) {
+    var board = new Board(e, -3, 3, -1.5, 3, 100);
+
+    // input
+    board.init('point', [0, 0], 'O');
+    board.init('line', [[-2, 0], [0, 0.6]], 'L1');
+    board.init('point', [0, 1], 'HIDDEN1', {visible: false});
+    board.init('parallel', ['L1', 'HIDDEN1'], 'L2');
+    board.init('line', [[0, 1], [1, 0]], 'L3');
+    board.init('point', [0, 2.1], 'HIDDEN2', {visible: false});
+    board.init('parallel', ['L3', 'HIDDEN2'], 'L4');
+
+    // steps
+    board.step('intersection', ['L2', 'L3'], 'A');
+    board.step('intersection', ['L1', 'L4'], 'B');
+    board.step('line', ['A', 'O'], 'L5');
+    board.step('circle', ['A', 'O'], 'C1');
+    board.step('otherintersection', ['C1', 'L5', 'O'], 'C');
+    board.step('circle', ['B', 'C'], 'C2');
+    board.step('otherintersection', ['C1', 'C2', 'C'], 'D');
+    board.step('line', ['O', 'D'], 'L6');
+
+    // solution
+    board.step('intersection', ['L1', 'L6'], 'I1');
+    board.step('intersection', ['L2', 'L6'], 'I2');
+    board.step('intersection', ['L3', 'L6'], 'I3');
+    board.step('intersection', ['L4', 'L6'], 'I4');
+    board.step('segment', ['I1', 'I2'], '', {color: 'darkorange'}, true);
+    board.step('segment', ['I3', 'I4'], '', {color: 'darkorange'}, true);
+
+    board.renderAll();
+}
+
 export function Epsilon8(e) {
     var board = new Board(e, -3, 3, -2.5, 3.5, 100);
 
@@ -205,10 +238,10 @@ export function Epsilon8(e) {
     board.step('line', ['K', 'H'], 'L7');
 
     // solution
-    board.step('segment', ['H', 'J'], '', {color: 'darkorange'});
-    board.step('segment', ['I', 'J'], '', {color: 'darkorange'});
-    board.step('segment', ['I', 'K'], '', {color: 'darkorange'});
-    board.step('segment', ['H', 'K'], '', {color: 'darkorange'});
+    board.step('segment', ['H', 'J'], '', {color: 'darkorange'}, true);
+    board.step('segment', ['I', 'J'], '', {color: 'darkorange'}, true);
+    board.step('segment', ['I', 'K'], '', {color: 'darkorange'}, true);
+    board.step('segment', ['H', 'K'], '', {color: 'darkorange'}, true);
 
     board.renderAll();
 }
