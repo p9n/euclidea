@@ -65,7 +65,13 @@ export class Board {
 
     create(elementType, parents, name, attributes = {}) {
         var e = this.board_.create(elementType, parents.slice(), attributes);
-        e.setName(name);
+        if (name != '') {
+            e.setName(name);
+            e.setLabel(name);
+            e.label.setAttribute({visible: false});
+            e.on('over', () => e.label.setAttribute({visible: true}));
+            e.on('out', () => e.label.setAttribute({visible: false}));
+        }
         return e;
     }
 
@@ -102,7 +108,6 @@ export function SetDefaultOptions() {
     JXG.Options.point.size = 1;
     JXG.Options.point.strokeColor = 'darkgrey';
     JXG.Options.point.fillColor = 'darkgrey';
-    JXG.Options.point.withLabel = false;
 
     JXG.Options.circle.strokeColor = 'darkgrey';
 
@@ -110,9 +115,4 @@ export function SetDefaultOptions() {
 
     JXG.Options.glider.strokeColor = 'red';
     JXG.Options.glider.fillColor = 'red';
-
-    if (DEBUG) {
-        JXG.Options.point.withLabel = true;
-        JXG.Options.geometryElement.withLabel = true;
-    }
 }

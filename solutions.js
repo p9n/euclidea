@@ -210,6 +210,5 @@ export function Epsilon8(e) {
     board.step('segment', ['I', 'K'], '', {color: 'darkorange'});
     board.step('segment', ['H', 'K'], '', {color: 'darkorange'});
 
-
     board.renderAll();
 }
