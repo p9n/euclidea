@@ -269,7 +269,45 @@ export function Zeta6(e) {
     // solution
     board.step('otherintersection', ['C5', 'L2', 'I3'], 'D');
     board.step('segment', ['C', 'D'], '', {color: 'darkorange'});
-    board.step('otherintersection', ['C5', 'L2', 'I3'], 'D"', {color: 'darkorange'});
+    board.step('point', ['X(D)', 'Y(D)'], 'D"', {color: 'darkorange'});
 
+    board.renderAll();
+}
+
+export function Zeta8(e) {
+    var board = new Board(e, -3.5, 2, -1.5, 3, 100);
+
+    // input
+    board.init('point', [-2, 0], 'A');
+    board.init('point', [0, 0], 'B');
+    board.init('point', [0.1, 1.44], 'C');
+    board.init('point', [0.3, 1.25], 'D');
+    board.init('segment', ['A', 'B'], 'L1');
+    board.init('segment', ['C', 'D'], 'L2');
+
+    // steps
+    board.step('line', ['B', 'D'], 'L3');
+    board.step('circle', ['D', 'B'], 'C1');
+    board.step('otherintersection', ['C1', 'L3', 'B'], 'E');
+    board.step('line', ['E', 'C'], 'L4');
+    board.step('circle', ['C', 'E'], 'C2');
+    board.step('otherintersection', ['C2', 'L4', 'E'], 'F');
+    board.step('circle', ['B', 'F'], 'C3');
+    board.step('circle', ['A', 'B'], 'C4');
+    board.step('intersection', ['C3', 'C4', 0], 'G');
+    board.step('circle', ['G', 'B'], 'C5');
+    board.step('intersection', ['C3', 'C5', 0], 'H');
+    board.step('line', ['A', 'H'], 'L5');
+    board.step('line', ['B', 'G'], 'L6');
+    
+    // solution
+    board.step('intersection', ['L5', 'L6'], 'I', {color: 'darkorange'});
+    board.step('segment', ['A', 'I'], '', {color: 'darkorange'}, true);
+    board.step('segment', ['B', 'I'], '', {color: 'darkorange'}, true);
+    board.step('segment', ['A', 'B'], '', {color: 'darkorange'}, true);
+    board.step('point', ['X(A)', 'Y(A)'], 'A"', {color: 'darkorange'});
+    board.step('point', ['X(B)', 'Y(B)'], 'B"', {color: 'darkorange'});
+    board.step('point', ['X(I)', 'Y(I)'], 'I"', {color: 'darkorange'});
+    
     board.renderAll();
 }
