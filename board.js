@@ -33,6 +33,7 @@ export class Board {
 
         var prev = $('<button>&lt;&lt;</button>').click(() => this.prev());
         var next = $('<button>&gt;&gt;</button>').click(() => this.next());
+        container.empty();
         container.append(board, prev, ' ', next);
 
         this.board_ = JXG.JSXGraph.initBoard(board.attr('id'), 
