@@ -29,6 +29,33 @@ export function Alpha7(e) {
     board.renderAll();
 }
 
+export function Gamma9(e) {
+    var board = new Board(e, -0.5, 3.5, -0.5, 2.4, 100);
+
+    // input
+    board.init('point', [0, 0], 'A');
+    board.init('point', [3, 0], 'B');
+    board.init('point', [2.1, 1.7], 'C');
+    board.init('point', [0.8, 1.9], 'D');
+    board.init('segment', ['A', 'B'], 'L1');
+    board.init('segment', ['B', 'C'], 'L2');
+    board.init('segment', ['C', 'D'], 'L3');
+    board.init('segment', ['D', 'A'], 'L4');
+
+    // steps
+    board.step('midpoint', ['A', 'D'], 'E');
+    board.step('perpendicular', ['L4', 'E'], '');
+    board.step('midpoint', ['B', 'C'], 'F');
+    board.step('perpendicular', ['L2', 'F'], '');
+    board.step('line', ['E', 'F'], 'L5');
+
+    // solution
+    board.step('midpoint', ['E', 'F'], 'G', {color: 'darkorange'});
+    board.step('perpendicular', ['L5', 'G'], '');
+
+    board.renderAll();
+}
+
 export function Delta2(e) {
     var board = new Board(e, -3, 3, -2, 3, 100);
 

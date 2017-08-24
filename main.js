@@ -3,6 +3,7 @@ import * as Board from './board.js';
 
 const ITEMS = [
     ['1-7 Inscribed Square (7E)', Solutions.Alpha7],
+    ['3-9 Centroid of Quadrilateral (4L 10E)', Solutions.Gamma9],
     ['4-2 Angle of 60° - 2 (4E)', Solutions.Delta2],
     ['4-4 Equilateral Triangle in Circle (6E)', Solutions.Delta4],
     ['4-9 Square by Opposite Midpoints (10E)', Solutions.Delta9],
