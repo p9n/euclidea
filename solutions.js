@@ -365,3 +365,35 @@ export function Zeta8(e) {
     
     board.renderAll();
 }
+
+export function Zeta9(e) {
+    var board = new Board.Board(e, -1.5, 2, -1, 2, 120);
+
+    // input
+    board.point([-1, 0], 'A', {}, Board.FLAG_INIT);
+    board.point([1, 0], 'B', {}, Board.FLAG_INIT);
+    board.point([0.4, 1.11], 'C', {}, Board.FLAG_INIT);
+    board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+    board.segment(['B', 'C'], 'L2', {}, Board.FLAG_INIT);
+    board.segment(['C', 'A'], 'L3', {}, Board.FLAG_INIT);
+
+    // steps
+    board.midpoint(['A', 'B'], 'F');
+    board.perpendicular(['L1', 'F'], 'L4');
+    board.circle(['F', 'A'], 'C3');
+    board.otherintersection(['L2', 'C3', 'B'], 'G');
+    board.otherintersection(['L3', 'C3', 'A'], 'H');
+    board.circle(['G', 'F'], 'C4');
+    board.circle(['H', 'F'], 'C5');
+    board.otherintersection(['C4', 'C5', 'F'], 'I');
+    board.line(['F', 'I'], 'L5');
+    board.intersection(['C3', 'C5', 0], 'J');
+    board.intersection(['C3', 'C5', 1], 'K');
+    board.line(['J', 'K'], 'L6');
+    board.intersection(['L5', 'L6'], 'L');
+
+    // solution
+    board.circle(['L', 'F'], '', {strokeColor: 'darkorange'});
+
+    board.renderAll();
+}
