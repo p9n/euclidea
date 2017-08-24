@@ -11,6 +11,7 @@ const ITEMS = [
     ['5-5 Hash (4E)', Solutions.Epsilon5],
     ['5-7 Line Equidistant from Two Lines (5E)', Solutions.Epsilon7],
     ['5-8 Circumscribed Square (11E)', Solutions.Epsilon8],
+    ['5-10 Circle Tangent to Square Side (6E)', Solutions.Epsilon10],
     ['6-6 Translate Segment (6E)', Solutions.Zeta6],
     ['6-8 Hypotenuse and Leg (9E)', Solutions.Zeta8],
 ]

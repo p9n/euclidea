@@ -267,6 +267,39 @@ export function Epsilon8(e) {
     board.renderAll();
 }
 
+export function Epsilon10(e) {
+    var board = new Board(e, -2, 3.5, -1.5, 3, 100);
+
+    // input
+    board.init('point', [0, 0], 'A');
+    board.init('point', [1.5, 0], 'B');
+    board.init('point', [1.5, 1.5], 'C');
+    board.init('point', [0, 1.5], 'D');
+    board.init('segment', ['A', 'B'], 'L1');
+    board.init('segment', ['B', 'C'], 'L2');
+    board.init('segment', ['C', 'D'], 'L3');
+    board.init('segment', ['D', 'A'], 'L4');
+
+    // solution
+    board.step('circle', ['A', 'B'], 'C1');
+    board.step('circle', ['B', 'A'], 'C2');
+    board.step('intersection', ['C1', 'C2', 0], 'E');
+    board.step('intersection', ['C1', 'C2', 1], 'F');
+    board.step('line', ['E', 'F'], 'L5');
+    board.step('intersection', ['L3', 'L5'], 'G');
+    board.step('intersection', ['L1', 'L5'], 'H');
+    board.step('circle', ['G', 'H'], 'C3');
+    board.step('intersection', ['C1', 'C3', 0], 'I');
+    board.step('intersection', ['C1', 'C3', 1], 'J');
+    board.step('line', ['I', 'J'], 'L6');
+    board.step('intersection', ['L6', 'L5'], 'H');
+
+    // solution
+    board.step('circle', ['H', 'A'], '', {strokeColor: 'darkorange'});
+
+    board.renderAll();
+}
+
 export function Zeta6(e) {
     var board = new Board(e, -3, 2.5, -1.5, 3, 100);
 
