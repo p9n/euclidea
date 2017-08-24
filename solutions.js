@@ -140,38 +140,6 @@ export function Epsilon3(e) {
 }
 
 export function Epsilon5(e) {
-    var board = new Board(e, -0.5, 3.5, -0.5, 2, 100);
-
-    // input
-    board.init('point', [0, 0], 'A');
-    board.init('point', [3, 0], 'B');
-    board.init('segment', ['A', 'B'], 'LAB');
-    board.init('point', [2.34, 1.5], 'C');
-    board.init('parallel', ['LAB', 'C'], 'LCD_hidden', {visible: false});
-    board.init('glider', [1.22, 1.5, 'LCD_hidden'], 'D');
-    board.init('segment', ['B', 'C'], 'LBC');
-    board.init('segment', ['C', 'D'], 'LCD');
-    board.init('segment', ['D', 'A'], 'LDA');
-
-    // steps
-    board.step('glider', [0.93, 1.14, 'LDA'], 'O1');
-    board.step('circle', ['O1', 'D'], 'C1');
-    board.step('otherintersection', ['C1', 'LDA', 'O1'], 'O2');
-    board.step('circle', ['O2', 'D'], 'C2');
-    board.step('intersection', ['C2', 'LAB', 0], 'E');
-    board.step('intersection', ['C2', 'LAB', 1], 'F');
-    board.step('line', ['D', 'E'], 'L1');
-    board.step('line', ['D', 'F'], 'L2');
-    board.step('otherintersection', ['C1', 'L1', 'D'], 'G');
-    board.step('otherintersection', ['C1', 'L2', 'D'], 'H');
-
-    // solution
-    board.step('line', ['G', 'H'], 'L3', {color: 'darkorange'});
-
-    board.renderAll();
-}
-
-export function Epsilon6(e) {
     var board = new Board(e, -3, 3, -1.5, 3, 100);
 
     // input
@@ -200,6 +168,32 @@ export function Epsilon6(e) {
     board.step('intersection', ['L4', 'L6'], 'I4');
     board.step('segment', ['I1', 'I2'], '', {color: 'darkorange'}, true);
     board.step('segment', ['I3', 'I4'], '', {color: 'darkorange'}, true);
+
+    board.renderAll();
+}
+
+export function Epsilon7(e) {
+    var board = new Board(e, -3, 3, -1, 2, 100);
+
+    // input
+    board.init('line', [[0, 0], [1, 0]], 'L1');
+    board.init('line', [[0, 1], [1, 1]], 'L2');
+
+    // steps
+    board.step('glider', [-2.1, 0, 'L1'], 'A');
+    board.step('glider', [-1.44, 0, 'L1'], 'B');
+    board.step('circle', ['B', 'A'], 'C1');
+    board.step('otherintersection', ['C1', 'L1', 'A'], 'C');
+    board.step('circle', ['C', 'A'], 'C2');
+    board.step('intersection', ['C2', 'L2', 0], 'D');
+    board.step('otherintersection', ['C2', 'L2', 'D'], 'E');
+    board.step('line', ['A', 'D'], 'L3');
+    board.step('line', ['A', 'E'], 'L4');
+    board.step('otherintersection', ['C1', 'L3', 'A'], 'F');
+    board.step('otherintersection', ['C1', 'L4', 'A'], 'G');
+
+    // solution
+    board.step('line', ['F', 'G'], '', {color: 'darkorange'});
 
     board.renderAll();
 }
