@@ -15,6 +15,9 @@ function colorAttribute(type, color) {
     }
 }
 
+export const FLAG_INIT = 1;
+export const FLAG_FINAL = 2;
+
 export class Board {
     static UniqueId_() {
         // TODO: improve this
@@ -94,6 +97,54 @@ export class Board {
         }
         this.elements_.push(nextElementsGroup);
         return true;
+    }
+
+    _init_or_step(elementType, parents, name, attributes={}, flag=0) {
+        if (flag == FLAG_INIT) {
+            this.init(elementType, parents, name, attributes);
+        } else {
+            this.step(elementType, parents, name, attributes, flag == FLAG_FINAL);
+        }
+    }
+
+    circle(...args) {
+        this._init_or_step.apply(this, ['circle'].concat(args));
+    }
+
+    glider(...args) {
+        this._init_or_step.apply(this, ['glider'].concat(args));
+    }
+
+    intersection(...args) {
+        this._init_or_step.apply(this, ['intersection'].concat(args));
+    }
+
+    line(...args) {
+        this._init_or_step.apply(this, ['line'].concat(args));
+    }
+
+    midpoint(...args) {
+        this._init_or_step.apply(this, ['midpoint'].concat(args));
+    }
+
+    otherintersection(...args) {
+        this._init_or_step.apply(this, ['otherintersection'].concat(args));
+    }
+
+    parallel(...args) {
+        this._init_or_step.apply(this, ['parallel'].concat(args));
+    }
+
+    perpendicular(...args) {
+        this._init_or_step.apply(this, ['perpendicular'].concat(args));
+    }
+
+    point(...args) {
+        this._init_or_step.apply(this, ['point'].concat(args));
+    }
+
+    segment(...args) {
+        this._init_or_step.apply(this, ['segment'].concat(args));
     }
 };
 
