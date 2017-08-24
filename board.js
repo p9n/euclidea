@@ -49,19 +49,26 @@ export class Board {
         this.elements_ = [];
     }
 
-    init(elementType, parents, name=undefined, attributes = {}) {
+    init_(elementType, parents, name, attributes) {
         var defaultColor = colorAttribute(elementType, 'blue')
         var combinedAttribute = Object.assign({}, defaultColor, attributes);
         this.create(elementType, parents, name, combinedAttribute);
     }
 
-    step(elementType, parents, name=undefined, attributes = {}, isFinalDecoration=false) {
-        if (isPointType(elementType) || isFinalDecoration) {
-            if (this.stack_.length == 0) this.stack_.push([]);
-        } else {
+    step_(elementType, parents, name, attributes, isFinalDecoration) {
+        let isLine = !(isPointType(elementType) || isFinalDecoration);
+
+        if (this.stack_.length == 0) {
             this.stack_.push([]);
         }
-        this.stack_[this.stack_.length - 1].push([elementType, parents, name, attributes, isFinalDecoration]);
+        var last = this.stack_[this.stack_.length - 1];
+        if (last.hasLine) {
+            last = [];
+            this.stack_.push(last);
+        }
+
+        last.hasLine = last.hasLine || isLine;
+        last.push([elementType, parents, name, attributes, isFinalDecoration]);
     }
 
     renderAll() {
@@ -99,52 +106,52 @@ export class Board {
         return true;
     }
 
-    _init_or_step(elementType, parents, name, attributes={}, flag=0) {
+    initOrStep_(elementType, parents, name='', attributes={}, flag=0) {
         if (flag == FLAG_INIT) {
-            this.init(elementType, parents, name, attributes);
+            this.init_(elementType, parents, name, attributes);
         } else {
-            this.step(elementType, parents, name, attributes, flag == FLAG_FINAL);
+            this.step_(elementType, parents, name, attributes, flag == FLAG_FINAL);
         }
     }
 
     circle(...args) {
-        this._init_or_step.apply(this, ['circle'].concat(args));
+        this.initOrStep_.apply(this, ['circle'].concat(args));
     }
 
     glider(...args) {
-        this._init_or_step.apply(this, ['glider'].concat(args));
+        this.initOrStep_.apply(this, ['glider'].concat(args));
     }
 
     intersection(...args) {
-        this._init_or_step.apply(this, ['intersection'].concat(args));
+        this.initOrStep_.apply(this, ['intersection'].concat(args));
     }
 
     line(...args) {
-        this._init_or_step.apply(this, ['line'].concat(args));
+        this.initOrStep_.apply(this, ['line'].concat(args));
     }
 
     midpoint(...args) {
-        this._init_or_step.apply(this, ['midpoint'].concat(args));
+        this.initOrStep_.apply(this, ['midpoint'].concat(args));
     }
 
     otherintersection(...args) {
-        this._init_or_step.apply(this, ['otherintersection'].concat(args));
+        this.initOrStep_.apply(this, ['otherintersection'].concat(args));
     }
 
     parallel(...args) {
-        this._init_or_step.apply(this, ['parallel'].concat(args));
+        this.initOrStep_.apply(this, ['parallel'].concat(args));
     }
 
     perpendicular(...args) {
-        this._init_or_step.apply(this, ['perpendicular'].concat(args));
+        this.initOrStep_.apply(this, ['perpendicular'].concat(args));
     }
 
     point(...args) {
-        this._init_or_step.apply(this, ['point'].concat(args));
+        this.initOrStep_.apply(this, ['point'].concat(args));
     }
 
     segment(...args) {
-        this._init_or_step.apply(this, ['segment'].concat(args));
+        this.initOrStep_.apply(this, ['segment'].concat(args));
     }
 };
 
