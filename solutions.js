@@ -397,3 +397,27 @@ export function Zeta9(e) {
 
     board.renderAll();
 }
+
+export function Eta3(e) {
+    var board = new Board.Board(e, -1.5, 2, -1, 2, 120);
+
+    // input
+    board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+    board.line(['A', [1, 0]], 'L1', {straightFirst: false}, Board.FLAG_INIT);
+
+    // steps
+    board.point([0.09, 1.01], 'B');
+    board.circle(['B', 'A'], 'C1');
+    board.otherintersection(['C1', 'L1', 'A'], 'C');
+    board.circle(['C', 'B'], 'C2');
+    board.intersection(['C1', 'C2', 0], 'D');
+
+    // solution
+    board.bisector(['C', 'A', 'D'], 'L2', {strokeColor: 'darkorange'});
+    board.otherintersection(['L2', 'C2', 'A'], 'E', {visible: false});
+    board.angle(['C', 'A', 'E'], '', {radius: 0.1}, Board.FLAG_FINAL);
+    board.angle(['E', 'A', 'D'], '', {radius: 0.13}, Board.FLAG_FINAL);
+    board.segment(['A', 'D'], '', {dash: 2}, Board.FLAG_FINAL);
+
+    board.renderAll();
+}

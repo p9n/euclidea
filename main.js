@@ -15,6 +15,7 @@ const ITEMS = [
     ['6-6 Translate Segment (6E)', Solutions.Zeta6],
     ['6-8 Hypotenuse and Leg (9E)', Solutions.Zeta8],
     ['6-9 Nine Point Circle (9E)', Solutions.Zeta9],
+    ['7-3 Angle of 75° (3L)', Solutions.Eta3],
 ]
 
 function InitNav() {

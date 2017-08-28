@@ -1,7 +1,13 @@
 var DEBUG = false;
 
-var POINT_SUBTYPES = new Set(
-    ['glider', 'intersection', 'otherintersection', 'point', 'midpoint'])
+const POINT_SUBTYPES = new Set(
+    ['glider', 'intersection', 'otherintersection', 'point', 'midpoint']);
+
+const ALL_TYPES = [
+    'circle', 'glider', 'intersection', 'line', 'midpoint',
+    'otherintersection', 'parallel', 'perpendicular', 'point',
+    'segment', 'bisector', 'angle'
+];
 
 function isPointType(type) {
     return POINT_SUBTYPES.has(type)
@@ -47,6 +53,10 @@ export class Board {
             });
         this.stack_ = [];
         this.elements_ = [];
+
+        for (let t of ALL_TYPES) {
+            this[t] = this.initOrStep_.bind(this, t);
+        }
     }
 
     init_(elementType, parents, name, attributes) {
@@ -113,46 +123,6 @@ export class Board {
             this.step_(elementType, parents, name, attributes, flag == FLAG_FINAL);
         }
     }
-
-    circle(...args) {
-        this.initOrStep_.apply(this, ['circle'].concat(args));
-    }
-
-    glider(...args) {
-        this.initOrStep_.apply(this, ['glider'].concat(args));
-    }
-
-    intersection(...args) {
-        this.initOrStep_.apply(this, ['intersection'].concat(args));
-    }
-
-    line(...args) {
-        this.initOrStep_.apply(this, ['line'].concat(args));
-    }
-
-    midpoint(...args) {
-        this.initOrStep_.apply(this, ['midpoint'].concat(args));
-    }
-
-    otherintersection(...args) {
-        this.initOrStep_.apply(this, ['otherintersection'].concat(args));
-    }
-
-    parallel(...args) {
-        this.initOrStep_.apply(this, ['parallel'].concat(args));
-    }
-
-    perpendicular(...args) {
-        this.initOrStep_.apply(this, ['perpendicular'].concat(args));
-    }
-
-    point(...args) {
-        this.initOrStep_.apply(this, ['point'].concat(args));
-    }
-
-    segment(...args) {
-        this.initOrStep_.apply(this, ['segment'].concat(args));
-    }
 };
 
 Board.counter_ = 0;
@@ -169,4 +139,6 @@ export function SetDefaultOptions() {
 
     JXG.Options.glider.strokeColor = 'red';
     JXG.Options.glider.fillColor = 'red';
+
+    JXG.Options.angle.withLabel = false;
 }
