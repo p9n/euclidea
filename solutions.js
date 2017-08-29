@@ -413,11 +413,39 @@ export function Eta3(e) {
     board.intersection(['C1', 'C2', 0], 'D');
 
     // solution
-    board.bisector(['C', 'A', 'D'], 'L2', {strokeColor: 'darkorange'});
+    board.bisector(['C', 'A', 'D'], 'L2', {color: 'darkorange'});
     board.otherintersection(['L2', 'C2', 'A'], 'E', {visible: false});
     board.angle(['C', 'A', 'E'], '', {radius: 0.1}, Board.FLAG_FINAL);
     board.angle(['E', 'A', 'D'], '', {radius: 0.13}, Board.FLAG_FINAL);
     board.segment(['A', 'D'], '', {dash: 2}, Board.FLAG_FINAL);
+
+    board.renderAll();
+}
+
+export function Eta8(e) {
+    var board = new Board.Board(e, -0.5, 3, -1, 2, 120);
+
+    // input
+    board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+    board.line(['A', [1, -0.1]], 'L1', {straightFirst: false}, Board.FLAG_INIT);
+    board.line(['A', [1, 0.85]], 'L2', {straightFirst: false}, Board.FLAG_INIT);
+    board.point([1, 0.4], 'B', {}, Board.FLAG_INIT);
+
+    // steps
+    board.glider([0.5, 0, 'L1'], 'C');
+    board.circle(['B', 'C'], 'C1');
+    board.otherintersection(['C1', 'L1', 'C'], 'D');
+    board.line(['C', 'B'], 'L3');
+    board.line(['D', 'B'], 'L4');
+    board.otherintersection(['C1', 'L3', 'C'], 'E');
+    board.otherintersection(['C1', 'L4', 'D'], 'F');
+    board.line(['E', 'F'], 'L5');
+    board.intersection(['L5', 'L2'], 'G');
+    board.line(['B', 'G'], 'L6');
+
+    // solution
+    board.intersection(['L6', 'L1'], 'H');
+    board.segment(['G', 'H'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
