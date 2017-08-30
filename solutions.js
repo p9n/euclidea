@@ -483,3 +483,37 @@ export function Eta8(e) {
 
     board.renderAll();
 }
+
+export function Eta11(e) {
+    var board = new Board.Board(e, -1.5, 2, -1, 2, 120);
+
+    // input
+    board.point([0.4, 0], 'A', {}, Board.FLAG_INIT);
+    board.point([1.51, 0], 'B', {}, Board.FLAG_INIT);
+    board.point([0.54, 0.88], 'C', {}, Board.FLAG_INIT);
+    board.line(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+    board.line(['B', 'C'], 'L2', {}, Board.FLAG_INIT);
+    board.line(['C', 'A'], 'L3', {}, Board.FLAG_INIT);
+
+    // steps
+    board.circle(['B', 'C'], 'C1');
+    board.intersection(['C1', 'L1', 1], 'D');
+    board.circle(['A', 'D'], 'C2');
+    board.intersection(['C2', 'L3', 1], 'E');
+    board.circle(['C', 'E'], 'C3');
+    board.circle(['E', 'C'], 'C4');
+    board.intersection(['C3', 'C4', 0], 'F');
+    board.intersection(['C3', 'C4', 1], 'G');
+    board.line(['F', 'G'], 'L4');
+    board.intersection(['C3', 'L2', 0], 'H');
+    board.circle(['H', 'C'], 'C5');
+    board.otherintersection(['C4', 'C5', 'C'], 'I');
+    board.line(['C', 'I'], 'L5');
+    board.intersection(['L4', 'L5'], 'J');
+    board.intersection(['L4', 'L3'], 'K');
+
+    // solution
+    board.circle(['J', 'K'], '', {strokeColor: 'darkorange'});
+
+    board.renderAll();
+}

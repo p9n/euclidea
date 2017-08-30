@@ -18,6 +18,7 @@ const ITEMS = [
     ['7-3 Angle of 75° (3L)', Solutions.Eta3],
     ['7-7 Inscribed Circle (8E)', Solutions.Eta7],
     ['7-8 Segment by Midpoint (5E)', Solutions.Eta8],
+    ['7-11 Excircle (8E)', Solutions.Eta11],
 ]
 
 function InitNav() {
