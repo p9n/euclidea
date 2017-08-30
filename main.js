@@ -16,7 +16,8 @@ const ITEMS = [
     ['6-8 Hypotenuse and Leg (9E)', Solutions.Zeta8],
     ['6-9 Nine Point Circle (9E)', Solutions.Zeta9],
     ['7-3 Angle of 75° (3L)', Solutions.Eta3],
-    ['7-8 Segment by Midpoint (5L)', Solutions.Eta8],
+    ['7-7 Inscribed Circle (8E)', Solutions.Eta7],
+    ['7-8 Segment by Midpoint (5E)', Solutions.Eta8],
 ]
 
 function InitNav() {
