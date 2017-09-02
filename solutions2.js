@@ -97,4 +97,90 @@ export function Theta7_L(e) {
 }
 
 export function Theta7_E(e) {
+    var board = new Board.Board(e, -2, 3, -2, 3, 100);
+
+    // input
+    board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+    board.point([1, 0], 'B', {}, Board.FLAG_INIT);
+    board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+
+    // steps
+    board.circle(['A', 'B'], 'C1');
+    board.circle(['B', 'A'], 'C2');
+    board.intersection(['C1', 'C2', 0], 'C');
+    board.intersection(['C1', 'C2', 1], 'D');
+    board.line(['C', 'D'], 'L2');
+    board.intersection(['L1', 'L2'], 'E');
+    board.circle(['E', 'A'], 'C3');
+    board.intersection(['L2', 'C3', 1], 'F');
+    board.line(['A', 'F'], 'L3');
+    board.line(['B', 'F'], 'L4');
+    board.intersection(['C1', 'L3', 1], 'A8');
+    board.circle(['F', 'A8'], 'C4');
+    board.intersection(['C2', 'C4'], 'A3');
+    board.otherintersection(['L3', 'C4', 'A8'], 'G');
+    board.otherintersection(['L4', 'C4', 'A3'], 'H');
+    board.line(['A3', 'G'], 'L5');
+    board.line(['A8', 'H'], 'L6');
+    board.intersection(['L2', 'C4', 0], 'I');
+    board.circle(['I', 'F'], 'C5');
+    board.otherintersection(['L2', 'C5', 'F'], 'J');
+    board.otherintersection(['L4', 'C5', 'F'], 'K');
+    board.otherintersection(['L3', 'C5', 'F'], 'L');
+    board.line(['J', 'K'], 'L7');
+    board.line(['J', 'L'], 'L8');
+    board.intersection(['C5', 'L5', 1], 'M');
+    board.intersection(['C5', 'L6', 1], 'N');
+    board.line(['M', 'N'], 'L9');
+
+    // solution
+    board.intersection(['L5', 'L7'], 'A4');
+    board.intersection(['L9', 'L7'], 'A5');
+    board.intersection(['L9', 'L8'], 'A6');
+    board.intersection(['L6', 'L8'], 'A7');
+    board.segment(['A', 'B'], '', {}, Board.FLAG_FINAL);
+    board.segment(['B', 'A3'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A3', 'A4'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A4', 'A5'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A5', 'A6'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A6', 'A7'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A7', 'A8'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A8', 'A'], '', {}, Board.FLAG_FINAL);
+
+    board.renderAll();
 }
+
+export function Theta8(e) {
+    var board = new Board.Board(e, -0.5, 4, -0.5, 2.5, 100);
+
+    // input
+    board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+    board.point([3.2, 0], 'B', {}, Board.FLAG_INIT);
+    board.segment(['A', 'B'], 'LAB', {}, Board.FLAG_INIT);
+    board.point([1.7, 1.5], 'C', {}, Board.FLAG_INIT);
+    board.parallel(['LAB', 'C'], 'LCD_hidden', {visible: false}, Board.FLAG_INIT);
+    board.glider([0.8, 1.5, 'LCD_hidden'], 'D', {color: 'blue'}, Board.FLAG_INIT);
+    board.segment(['B', 'C'], 'LBC', {}, Board.FLAG_INIT);
+    board.segment(['C', 'D'], 'LCD', {}, Board.FLAG_INIT);
+    board.segment(['D', 'A'], 'LDA', {}, Board.FLAG_INIT);
+    board.segment(['A', 'C'], 'LAC', {}, Board.FLAG_INIT);
+    board.segment(['B', 'D'], 'LBD', {}, Board.FLAG_INIT);
+
+    // steps
+    board.intersection(['LAC', 'LBD'], 'E');
+    board.line(['C', 'D'], 'L1');
+    board.circle(['C', 'D'], 'C1');
+    board.otherintersection(['C1', 'L1', 'D'], 'F');
+    board.line(['F', 'A'], 'L2');
+    board.line(['F', 'E'], 'L3');
+    board.intersection(['L2', 'LBD'], 'G');
+    board.intersection(['L3', 'LDA'], 'H');
+    board.line(['G', 'H'], 'L4');
+
+    // solution
+    board.intersection(['L4', 'LBC'], 'I');
+    board.segment(['H', 'I'], '', {}, Board.FLAG_FINAL);
+
+    board.renderAll();
+}
+

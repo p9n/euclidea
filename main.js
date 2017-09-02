@@ -24,6 +24,7 @@ const ITEMS = [
     ['8-3 Harmonic Mean of Trapezoid bases (5E)', Solutions2.Theta5],
     ['8-7 Regular Octagon (9L)', Solutions2.Theta7_L],
     ['8-7 Regular Octagon (13E)', Solutions2.Theta7_E],
+    ['8-8 Trisection by Trapezoid Diagonals (5E)', Solutions2.Theta8],
 ]
 
 function InitNav() {
