@@ -16,8 +16,8 @@ export function Theta3(e) {
     board.circle(['D', 'A'], 'C3');
 
     // solution
-    board.otherintersection(['C3', 'L', 'A'], 'E', {color: 'darkorange'});
-    board.segment(['A', 'E'], '', {color: 'darkorange'});
+    board.otherintersection(['C3', 'L', 'A'], 'E', {}, Board.FLAG_FINAL);
+    board.segment(['A', 'E'], '', {}, Board.FLAG_FINAL);
     
     board.renderAll();
 }
@@ -46,7 +46,7 @@ export function Theta5(e) {
     board.otherintersection(['C1', 'C2', 'F'], 'G');
 
     // solution
-    board.line(['E', 'G'], '', {color: 'darkorange'});
+    board.line(['E', 'G'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -84,14 +84,14 @@ export function Theta7_L(e) {
     board.intersection(['L7', 'L8'], 'A5');
     board.intersection(['L6', 'L9'], 'A7');
     board.intersection(['L3', 'L9'], 'A8');
-    board.segment(['A', 'B'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
-    board.segment(['B', 'A3'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
-    board.segment(['A3', 'A4'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
-    board.segment(['A4', 'A5'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
-    board.segment(['A5', 'F'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
-    board.segment(['F', 'A7'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
-    board.segment(['A7', 'A8'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
-    board.segment(['A8', 'A'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
+    board.segment(['A', 'B'], '', {}, Board.FLAG_FINAL);
+    board.segment(['B', 'A3'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A3', 'A4'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A4', 'A5'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A5', 'F'], '', {}, Board.FLAG_FINAL);
+    board.segment(['F', 'A7'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A7', 'A8'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A8', 'A'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }

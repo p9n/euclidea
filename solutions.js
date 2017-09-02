@@ -17,14 +17,18 @@ export function Alpha7(e) {
     board.otherintersection(['C1', 'C3', 'I1'], 'I3');
     board.intersection(['C3', 'L1', 'O'], 'I4');
     board.otherintersection(['C3', 'L1', 'I4'], 'I5');
-
-    // solution
-    board.line(['I3', 'I4'], 'L2', {color: 'darkorange'});
-    board.line(['I3', 'I5'], 'L3', {color: 'darkorange'});
+    board.line(['I3', 'I4'], 'L2');
+    board.line(['I3', 'I5'], 'L3');
     board.otherintersection(['L2', 'C1', 'I3'], 'I6');
     board.otherintersection(['L3', 'C1', 'I3'], 'I7');
-    board.line(['A', 'I6'], 'L4', {color: 'darkorange'});
-    board.line(['A', 'I7'], 'L5', {color: 'darkorange'});
+    board.line(['A', 'I6'], 'L4');
+    board.line(['A', 'I7'], 'L5');
+
+    // solution
+    board.segment(['A', 'I7'], '', {}, Board.FLAG_FINAL);
+    board.segment(['I7', 'I3'], '', {}, Board.FLAG_FINAL);
+    board.segment(['I3', 'I6'], '', {}, Board.FLAG_FINAL);
+    board.segment(['I6', 'A'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -50,7 +54,7 @@ export function Gamma9(e) {
     board.line(['E', 'F'], 'L5');
 
     // solution
-    board.midpoint(['E', 'F'], 'G', {color: 'darkorange'});
+    board.midpoint(['E', 'F'], 'G', {}, Board.FLAG_FINAL);
     board.perpendicular(['L5', 'G'], '');
 
     board.renderAll();
@@ -74,9 +78,9 @@ export function Delta2(e) {
 
     // solution
     board.line(['A', 'I3'], 'L2');
-    board.intersection(['L1', 'L2'], 'I4', {color: 'darkorange'});
-    board.line(['A', 'I4'], '', {straightLast: false, color: 'darkorange'}, Board.FLAG_FINAL);
-    board.line(['B', 'I4'], '', {straightLast: false, color: 'darkorange'}, Board.FLAG_FINAL);
+    board.intersection(['L1', 'L2'], 'I4', {}, Board.FLAG_FINAL);
+    board.line(['A', 'I4'], '', {straightLast: false}, Board.FLAG_FINAL);
+    board.line(['B', 'I4'], '', {straightLast: false}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -95,15 +99,18 @@ export function Delta4(e) {
     board.circle(['A', 'I1-2'], 'C3');
     board.otherintersection(['C2', 'C3', 'I1-2'], 'I2-3');
     board.circle(['I2-3', 'A'], 'C4');
-
-    // solution
     board.intersection(['C3', 'C4'], 'I3-4');
     board.otherintersection(['C3', 'C4', 'I3-4'], 'I3-4-other');
-    board.line(['A', 'I3-4'], 'L1', {color: 'darkorange'});
-    board.line(['A', 'I3-4-other'], 'L2', {color: 'darkorange'});
+    board.line(['A', 'I3-4'], 'L1');
+    board.line(['A', 'I3-4-other'], 'L2');
     board.otherintersection(['C1', 'L1', 'A'], 'I-C1-L1');
     board.otherintersection(['C1', 'L2', 'A'], 'I-C1-L2');
-    board.line(['I-C1-L1', 'I-C1-L2'], 'L3', {color: 'darkorange'});
+    board.line(['I-C1-L1', 'I-C1-L2'], 'L3');
+
+    // solution
+    board.segment(['A', 'I-C1-L1'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A', 'I-C1-L2'], '', {}, Board.FLAG_FINAL);
+    board.segment(['I-C1-L1', 'I-C1-L2'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -123,24 +130,30 @@ export function Delta9(e) {
     board.otherintersection(['C1', 'C3', 'B'], 'I1-3');
     board.circle(['I1-3', 'A'], 'C4');
     board.otherintersection(['C3', 'C4', 'B'], 'I3-4');
-
-    board.line(['A', 'I3-4'], 'L1', {color: 'darkorange'});
-
+    board.line(['A', 'I3-4'], 'L1');
     board.intersection(['L1', 'C1'], 'I1');
     board.circle(['I1', 'A'], 'C5');
     board.intersection(['C1', 'C5'], 'I1-5');
     board.otherintersection(['C1', 'C5', 'I1-5'], 'I1-5-other');
-    board.line(['I1-5', 'I1-5-other'], 'L2', {color: 'darkorange'});
-
+    board.line(['I1-5', 'I1-5-other'], 'L2');
     board.otherintersection(['L1', 'C1', 'I1'], 'I2');
     board.circle(['I2', 'A'], 'C6');
     board.intersection(['C1', 'C6'], 'I1-6');
     board.otherintersection(['C1', 'C6', 'I1-6'], 'I1-6-other');
-    board.line(['I1-6', 'I1-6-other'], 'L3', {color: 'darkorange'});
-
+    board.line(['I1-6', 'I1-6-other'], 'L3');
     board.otherintersection(['C2', 'C5', 'A'], 'I2-5');
     board.otherintersection(['C2', 'C6', 'A'], 'I2-6');
-    board.line(['I2-5', 'I2-6'], 'L4', {color: 'darkorange'});
+    board.line(['I2-5', 'I2-6'], 'L4');
+
+    // solution
+    board.intersection(['L1', 'L2'], 'A1', {visible: false});
+    board.intersection(['L2', 'L4'], 'A2', {visible: false});
+    board.intersection(['L4', 'L3'], 'A3', {visible: false});
+    board.intersection(['L3', 'L1'], 'A4', {visible: false});
+    board.segment(['A1', 'A2'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A2', 'A3'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A3', 'A4'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A4', 'A1'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -161,7 +174,7 @@ export function Epsilon3(e) {
     board.otherintersection(['C1', 'C2', 'I1'], 'I2');
 
     // solution
-    board.line(['C', 'I2'], 'L2', {color: 'darkorange'});
+    board.line(['C', 'I2'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -193,8 +206,8 @@ export function Epsilon5(e) {
     board.intersection(['L2', 'L6'], 'I2');
     board.intersection(['L3', 'L6'], 'I3');
     board.intersection(['L4', 'L6'], 'I4');
-    board.segment(['I1', 'I2'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
-    board.segment(['I3', 'I4'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
+    board.segment(['I1', 'I2'], '', {}, Board.FLAG_FINAL);
+    board.segment(['I3', 'I4'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -220,7 +233,7 @@ export function Epsilon7(e) {
     board.otherintersection(['C1', 'L4', 'A'], 'G');
 
     // solution
-    board.line(['F', 'G'], '', {color: 'darkorange'});
+    board.line(['F', 'G'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -295,7 +308,7 @@ export function Epsilon10(e) {
     board.intersection(['L6', 'L5'], 'H');
 
     // solution
-    board.circle(['H', 'A'], '', {strokeColor: 'darkorange'});
+    board.circle(['H', 'A'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -322,8 +335,8 @@ export function Zeta6(e) {
 
     // solution
     board.otherintersection(['C5', 'L2', 'I3'], 'D');
-    board.segment(['C', 'D'], '', {color: 'darkorange'});
-    board.point(['X(D)', 'Y(D)'], 'D"', {color: 'darkorange'});
+    board.segment(['C', 'D'], '', {}, Board.FLAG_FINAL);
+    board.point(['X(D)', 'Y(D)'], 'D"', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -356,9 +369,9 @@ export function Zeta8(e) {
     
     // solution
     board.intersection(['L5', 'L6'], 'I', {color: 'darkorange'});
-    board.segment(['A', 'I'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
-    board.segment(['B', 'I'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
-    board.segment(['A', 'B'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
+    board.segment(['A', 'I'], '', {}, Board.FLAG_FINAL);
+    board.segment(['B', 'I'], '', {}, Board.FLAG_FINAL);
+    board.segment(['A', 'B'], '', {}, Board.FLAG_FINAL);
     board.point(['X(A)', 'Y(A)'], 'A"', {color: 'darkorange'});
     board.point(['X(B)', 'Y(B)'], 'B"', {color: 'darkorange'});
     board.point(['X(I)', 'Y(I)'], 'I"', {color: 'darkorange'});
@@ -393,7 +406,7 @@ export function Zeta9(e) {
     board.intersection(['L5', 'L6'], 'L');
 
     // solution
-    board.circle(['L', 'F'], '', {strokeColor: 'darkorange'});
+    board.circle(['L', 'F'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -413,7 +426,7 @@ export function Eta3(e) {
     board.intersection(['C1', 'C2', 0], 'D');
 
     // solution
-    board.bisector(['C', 'A', 'D'], 'L2', {color: 'darkorange'});
+    board.bisector(['C', 'A', 'D'], 'L2', {}, Board.FLAG_FINAL);
     board.otherintersection(['L2', 'C2', 'A'], 'E', {visible: false});
     board.angle(['C', 'A', 'E'], '', {radius: 0.1}, Board.FLAG_FINAL);
     board.angle(['E', 'A', 'D'], '', {radius: 0.13}, Board.FLAG_FINAL);
@@ -435,7 +448,7 @@ export function Eta7(e) {
 
     // steps
     board.circle(['B', 'C'], 'C1');
-    board.intersection(['C1', 'L1', 0], 'D');
+    board.intersection(['C1', 'L1', 1], 'D');
     board.circle(['A', 'D'], 'C2');
     board.intersection(['C2', 'L3', 1], 'E');
     board.circle(['C', 'E'], 'C3');
@@ -451,7 +464,7 @@ export function Eta7(e) {
     board.intersection(['L4', 'L3'], 'K');
 
     // solution
-    board.circle(['J', 'K'], '', {strokeColor: 'darkorange'});
+    board.circle(['J', 'K'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -479,7 +492,7 @@ export function Eta8(e) {
 
     // solution
     board.intersection(['L6', 'L1'], 'H');
-    board.segment(['G', 'H'], '', {color: 'darkorange'}, Board.FLAG_FINAL);
+    board.segment(['G', 'H'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -513,7 +526,7 @@ export function Eta11(e) {
     board.intersection(['L4', 'L3'], 'K');
 
     // solution
-    board.circle(['J', 'K'], '', {strokeColor: 'darkorange'});
+    board.circle(['J', 'K'], '', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }

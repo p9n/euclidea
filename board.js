@@ -19,7 +19,7 @@ function colorAttribute(type, color) {
     if (isPointType(type)) {
         return {color: color};
     } else {
-        return {strokeColor: color};
+        return {strokeColor: color, highlightStrokeColor: color};
     }
 }
 
@@ -62,9 +62,7 @@ export class Board {
     }
 
     init_(elementType, parents, name, attributes) {
-        var defaultColor = colorAttribute(elementType, 'blue')
-        var combinedAttribute = Object.assign({}, defaultColor, attributes);
-        this.create(elementType, parents, name, combinedAttribute);
+        this.create(elementType, parents, name, attributes);
     }
 
     step_(elementType, parents, name, attributes, isFinalDecoration) {
@@ -120,9 +118,17 @@ export class Board {
 
     initOrStep_(elementType, parents, name='', attributes={}, flag=0) {
         if (flag == FLAG_INIT) {
-            this.init_(elementType, parents, name, attributes);
+            var defaultColor = colorAttribute(elementType, 'blue');
+            var combinedAttribute = Object.assign({}, defaultColor, attributes);
+            this.init_(elementType, parents, name, combinedAttribute);
+        } else if (flag == FLAG_FINAL) {
+            var defaultAttribute = colorAttribute(elementType, 'darkorange');
+            defaultAttribute.strokeWidth = 3;
+            defaultAttribute.highlightStrokeWidth = 3;
+            var combinedAttribute = Object.assign({}, defaultAttribute, attributes);
+            this.step_(elementType, parents, name, combinedAttribute, true);
         } else {
-            this.step_(elementType, parents, name, attributes, flag == FLAG_FINAL);
+            this.step_(elementType, parents, name, attributes, false);
         }
     }
 };

@@ -10,6 +10,7 @@ body {
     background-color: #f1f1f1;
     top: 0;
     left: 0;
+    overflow: scroll;
 }
 
 #jxg-container {
