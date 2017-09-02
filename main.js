@@ -25,6 +25,8 @@ const ITEMS = [
     ['8-7 Regular Octagon (9L)', Solutions2.Theta7_L],
     ['8-7 Regular Octagon (13E)', Solutions2.Theta7_E],
     ['8-8 Trisection by Trapezoid Diagonals (5E)', Solutions2.Theta8],
+    ['8-9 Minimum Perimeter - 2 (8E)', Solutions2.Theta9],
+    ['8-10 Harmonic Mean of Segments (4E)', Solutions2.Theta10],
 ]
 
 function InitNav() {
