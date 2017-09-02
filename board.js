@@ -1,12 +1,14 @@
 var DEBUG = false;
 
-const POINT_SUBTYPES = new Set(
-    ['glider', 'intersection', 'otherintersection', 'point', 'midpoint']);
+const POINT_SUBTYPES = new Set([
+    'glider', 'intersection', 'otherintersection', 'point',
+    'midpoint', 'mirrorpoint'
+]);
 
 const ALL_TYPES = [
     'circle', 'glider', 'intersection', 'line', 'midpoint',
     'otherintersection', 'parallel', 'perpendicular', 'point',
-    'segment', 'bisector', 'angle'
+    'segment', 'bisector', 'angle', 'mirrorpoint',
 ];
 
 function isPointType(type) {
@@ -136,6 +138,7 @@ export function SetDefaultOptions() {
 
     JXG.Options.line.strokeColor = 'darkgrey';
     JXG.Options.perpendicular.strokeColor = 'darkgrey';
+    JXG.Options.bisector.strokeColor = 'darkgrey';
 
     JXG.Options.glider.strokeColor = 'red';
     JXG.Options.glider.fillColor = 'red';

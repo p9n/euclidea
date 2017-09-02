@@ -1,4 +1,5 @@
 import * as Solutions from './solutions.js';
+import * as Solutions2 from './solutions2.js';
 import * as Board from './board.js';
 
 const ITEMS = [
@@ -19,7 +20,10 @@ const ITEMS = [
     ['7-7 Inscribed Circle (8E)', Solutions.Eta7],
     ['7-8 Segment by Midpoint (5E)', Solutions.Eta8],
     ['7-11 Excircle (8E)', Solutions.Eta11],
-    ['8-2 Third Proportional (3L 3E)', Solutions.Theta3],
+    ['8-2 Third Proportional (3L 3E)', Solutions2.Theta3],
+    ['8-3 Harmonic Mean of Trapezoid bases (5E)', Solutions2.Theta5],
+    ['8-7 Regular Octagon (9L)', Solutions2.Theta7_L],
+    ['8-7 Regular Octagon (13E)', Solutions2.Theta7_E],
 ]
 
 function InitNav() {

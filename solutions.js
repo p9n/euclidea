@@ -517,26 +517,3 @@ export function Eta11(e) {
 
     board.renderAll();
 }
-
-export function Theta3(e) {
-    var board = new Board.Board(e, -1.5, 2, -2, 2, 120);
-
-    // input
-    board.point([-0.2, 0], 'A', {}, Board.FLAG_INIT);
-    board.point([0.9, 0], 'B', {}, Board.FLAG_INIT);
-    board.point([1.4, 0], 'C', {}, Board.FLAG_INIT);
-    board.line(['A', 'B'], 'L', {straightFirst: false}, Board.FLAG_INIT);
-
-    // steps
-    board.circle(['C', 'A'], 'C1');
-    board.circle(['A', 'B'], 'C2');
-    board.intersection(['C1', 'C2', 0], 'D');
-    board.circle(['D', 'A'], 'C3');
-
-    // solution
-    board.otherintersection(['C3', 'L', 'A'], 'E', {color: 'darkorange'});
-    board.segment(['A', 'E'], '', {color: 'darkorange'});
-    
-    board.renderAll();
-
-}
