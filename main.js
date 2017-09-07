@@ -27,6 +27,8 @@ const ITEMS = [
     ['8-8 Trisection by Trapezoid Diagonals (5E)', Solutions2.Theta8],
     ['8-9 Minimum Perimeter - 2 (8E)', Solutions2.Theta9],
     ['8-10 Harmonic Mean of Segments (4E)', Solutions2.Theta10],
+    ['8-11 Triangle by Angle and Centroid (7E)', Solutions2.Theta11],
+    ['8-12 Triangle Mid-Segment (5E)', Solutions2.Theta12],
 ]
 
 function InitNav() {

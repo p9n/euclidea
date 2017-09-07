@@ -247,3 +247,63 @@ export function Theta10(e) {
 
     board.renderAll();
 }
+
+export function Theta11(e) {
+    var board = new Board.Board(e, -0.5, 4, -1, 2, 120);
+
+    // input
+    board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+    board.line(['A', [1, -0.1]], 'L1', {straightFirst: false}, Board.FLAG_INIT);
+    board.line(['A', [1, 0.85]], 'L2', {straightFirst: false}, Board.FLAG_INIT);
+    board.point([1, 0.4], 'B', {}, Board.FLAG_INIT);
+
+    // steps
+    board.line(['A', 'B'], 'L3');
+    board.circle(['B', 'A'], 'C1');
+    board.otherintersection(['C1', 'L3', 'A'], 'D');
+    board.circle(['D', 'B'], 'C2');
+    board.intersection(['C1', 'C2', 0], 'E');
+    board.intersection(['C1', 'C2', 1], 'F');
+    board.line(['E', 'F'], 'L4');
+    board.intersection(['L3', 'L4'], 'G');
+    board.intersection(['C1', 'L1', 0], 'H');
+    board.line(['G', 'H'], 'L5');
+    board.intersection(['C2', 'L5', 1], 'I');
+    board.intersection(['C2', 'L3', 0], 'J');
+    board.line(['I', 'J'], 'L6');
+    board.intersection(['L2', 'L6'], 'K');
+
+    // solution
+    board.line(['G', 'K'], '', {}, Board.FLAG_FINAL);
+
+    board.renderAll();
+}
+
+export function Theta12(e) {
+    var board = new Board.Board(e, -1.5, 2, -1, 2, 120);
+
+    // input
+    board.point([-1.14, -0.5], 'A', {}, Board.FLAG_INIT);
+    board.point([1.44, -0.48], 'B', {}, Board.FLAG_INIT);
+    board.point([0.7, 1.54], 'C', {}, Board.FLAG_INIT);
+    board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+    board.segment(['B', 'C'], 'L2', {}, Board.FLAG_INIT);
+    board.segment(['C', 'A'], 'L3', {}, Board.FLAG_INIT);
+
+    // steps
+    board.glider([0.26, 1.06, 'L3'], 'D');
+    board.circle(['D', 'C'], 'C1');
+    board.otherintersection(['C1', 'L3', 'C'], 'E');
+    board.circle(['E', 'C'], 'C2');
+    board.intersection(['C2', 'L1', 0], 'F');
+    board.intersection(['C2', 'L1', 1], 'G');
+    board.line(['C', 'F'], 'L4');
+    board.line(['C', 'G'], 'L5');
+    board.otherintersection(['C1', 'L4', 'C'], 'H');
+    board.otherintersection(['C1', 'L5', 'C'], 'I');
+    
+    // solution
+    board.line(['H', 'I'], '', {}, Board.FLAG_FINAL);
+
+    board.renderAll();
+}
