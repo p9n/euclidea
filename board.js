@@ -25,6 +25,7 @@ function colorAttribute(type, color) {
 
 export const FLAG_INIT = 1;
 export const FLAG_FINAL = 2;
+export const FLAG_SKIP = 4;
 
 export class Board {
     static UniqueId_() {
@@ -128,7 +129,7 @@ export class Board {
             var combinedAttribute = Object.assign({}, defaultAttribute, attributes);
             this.step_(elementType, parents, name, combinedAttribute, true);
         } else {
-            this.step_(elementType, parents, name, attributes, false);
+            this.step_(elementType, parents, name, attributes, flag == FLAG_SKIP);
         }
     }
 };

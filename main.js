@@ -31,6 +31,8 @@ const ITEMS = [
     ['8-11 Triangle by Angle and Centroid (7E)', Solutions2.Theta11],
     ['8-12 Triangle Mid-Segment (5E)', Solutions2.Theta12],
     ['9-1 Tangent of Circle (5E)', Solutions3.Iota1],
+    ['9-2 Outer Tangent (6L)', Solutions3.Iota2_L],
+    ['9-2 Outer Tangent (8E)', Solutions3.Iota2_E],
 ]
 
 function InitNav() {
