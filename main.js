@@ -1,5 +1,6 @@
 import * as Solutions from './solutions.js';
 import * as Solutions2 from './solutions2.js';
+import * as Solutions3 from './solutions3.js';
 import * as Board from './board.js';
 
 const ITEMS = [
@@ -29,6 +30,7 @@ const ITEMS = [
     ['8-10 Harmonic Mean of Segments (4E)', Solutions2.Theta10],
     ['8-11 Triangle by Angle and Centroid (7E)', Solutions2.Theta11],
     ['8-12 Triangle Mid-Segment (5E)', Solutions2.Theta12],
+    ['9-1 Tangent of Circle (5E)', Solutions3.Iota1],
 ]
 
 function InitNav() {
