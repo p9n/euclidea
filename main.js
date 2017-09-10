@@ -33,6 +33,8 @@ const ITEMS = [
     ['9-1 Tangent of Circle (5E)', Solutions3.Iota1],
     ['9-2 Outer Tangent (6L)', Solutions3.Iota2_L],
     ['9-2 Outer Tangent (8E)', Solutions3.Iota2_E],
+    ['9-3 Inner Tangent (6L)', Solutions3.Iota3_L],
+    ['9-3 Inner Tangent (8E)', Solutions3.Iota3_E],
 ]
 
 function InitNav() {
