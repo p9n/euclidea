@@ -426,11 +426,7 @@ export function Eta3(e) {
     board.intersection(['C1', 'C2', 0], 'D');
 
     // solution
-    board.bisector(['C', 'A', 'D'], 'L2', {}, Board.FLAG_FINAL);
-    board.otherintersection(['L2', 'C2', 'A'], 'E', {visible: false});
-    board.angle(['C', 'A', 'E'], '', {radius: 0.1}, Board.FLAG_FINAL);
-    board.angle(['E', 'A', 'D'], '', {radius: 0.13}, Board.FLAG_FINAL);
-    board.segment(['A', 'D'], '', {dash: 2}, Board.FLAG_FINAL);
+    board.angleBisector(['C', 'A', 'D'], 'L2', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }

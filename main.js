@@ -35,6 +35,10 @@ const ITEMS = [
     ['9-2 Outer Tangent (8E)', Solutions3.Iota2_E],
     ['9-3 Inner Tangent (6L)', Solutions3.Iota3_L],
     ['9-3 Inner Tangent (8E)', Solutions3.Iota3_E],
+    ['9-4 Rotation 90° (5L 9E)', Solutions3.Iota4],
+    ['9-5 Rotation 60° (4L 4E)', Solutions3.Iota5],
+    ['9-6 Segment Trisection (5L)', Solutions3.Iota6_L],
+    ['9-6 Segment Trisection (6E)', Solutions3.Iota6_E],
 ]
 
 function InitNav() {

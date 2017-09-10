@@ -132,6 +132,14 @@ export class Board {
             this.step_(elementType, parents, name, attributes, flag == FLAG_SKIP);
         }
     }
+
+    angleBisector(parents, name='', attributes={}, flag=0) {
+        var [a, b, c] = parents;
+        this.segment([b, a], '', {dash: 2}, FLAG_SKIP);
+        this.segment([b, c], '', {dash: 2}, FLAG_SKIP);
+        this.angle([a, b, c], '', {}, FLAG_SKIP);
+        this.bisector(parents, name, attributes, flag);
+    }
 };
 
 Board.counter_ = 0;
@@ -151,4 +159,8 @@ export function SetDefaultOptions() {
     JXG.Options.glider.fillColor = 'red';
 
     JXG.Options.angle.withLabel = false;
+    JXG.Options.angle.radius = 0.2;
+    JXG.Options.angle.fillColor = '#87CEFA';
+    JXG.Options.angle.strokeColor = '#48D1CC';
+
 }
