@@ -40,6 +40,8 @@ const ITEMS = [
     ['9-6 Segment Trisection (5L)', Solutions3.Iota6_L],
     ['9-6 Segment Trisection (6E)', Solutions3.Iota6_E],
     ['9-7 Segment Trisection* (8E)', Solutions3.Iota7],
+    ['9-8 Chord Trisection (3L)', Solutions3.Iota8_L],
+    ['9-8 Chord Trisection (3E)', Solutions3.Iota8_E],
 ]
 
 function InitNav() {
