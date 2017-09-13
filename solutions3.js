@@ -271,3 +271,43 @@ export function Iota6_E(e) {
 
     board.renderAll();
 }
+
+export function Iota7(e) {
+    var board = new Board.Board(e, -2, 3, -2, 1.5, 100);
+
+    // input
+    board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+    board.point([1, 0], 'B', {}, Board.FLAG_INIT);
+    board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+    board.point([0, -1.5], 'C', {}, Board.FLAG_INIT);
+    board.parallel(['L1', 'C'], 'L2', {}, Board.FLAG_INIT);
+
+    // steps
+    board.glider([-1, -1.5, 'L2'], 'D');
+    board.glider([2.1, -1.5, 'L2'], 'E');
+    board.line(['A', 'D'], 'L3');
+    board.line(['B', 'E'], 'L4');
+    board.intersection(['L3', 'L4'], 'F');
+    board.line(['A', 'E'], 'L5');
+    board.line(['B', 'D'], 'L6');
+    board.intersection(['L5', 'L6'], 'G');
+    board.line(['F', 'G'], 'L7');
+    board.intersection(['L1', 'L7'], 'H');
+    board.line(['D', 'H'], 'L8');
+    board.intersection(['L5', 'L8'], 'I');
+    board.line(['F', 'I'], 'L9');
+    board.intersection(['L1', 'L9'], 'J');
+    board.intersection(['L2', 'L9'], 'K');
+    board.intersection(['L4', 'L8'], 'L');
+    board.line(['K', 'L'], 'L10');
+    board.intersection(['L1', 'L10'], 'M');
+    
+    // solution
+    board.point(['X(A)', 'Y(A)'], 'A2', {}, Board.FLAG_FINAL);
+    board.point(['X(B)', 'Y(B)'], 'B2', {}, Board.FLAG_FINAL);
+    board.point(['X(J)', 'Y(J)'], 'J2', {}, Board.FLAG_FINAL);
+    board.point(['X(M)', 'Y(M)'], 'M2', {}, Board.FLAG_FINAL);
+    board.segment(['A', 'B'], '', {}, Board.FLAG_FINAL);
+
+    board.renderAll();
+}
