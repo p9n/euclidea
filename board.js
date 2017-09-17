@@ -2,13 +2,13 @@ var DEBUG = false;
 
 const POINT_SUBTYPES = new Set([
     'glider', 'intersection', 'otherintersection', 'point',
-    'midpoint', 'mirrorpoint'
+    'midpoint', 'mirrorpoint', 'parallelpoint',
 ]);
 
 const ALL_TYPES = [
     'circle', 'glider', 'intersection', 'line', 'midpoint',
     'otherintersection', 'parallel', 'perpendicular', 'point',
-    'segment', 'bisector', 'angle', 'mirrorpoint',
+    'segment', 'bisector', 'angle', 'mirrorpoint', 'parallelpoint',
 ];
 
 function isPointType(type) {
@@ -28,10 +28,10 @@ export const FLAG_FINAL = 2;
 export const FLAG_SKIP = 4;
 
 export class Board {
-    static UniqueId_() {
+    static uniqueId_() {
         // TODO: improve this
         Board.counter_ += 1;
-        return 'board_' + Board.counter_;
+        return 'uuid-' + Board.counter_;
     }
 
     constructor(container, xmin, xmax, ymin, ymax, zoom) {
@@ -41,7 +41,7 @@ export class Board {
             width: (xmax - xmin) * zoom + 'px',
             height: (ymax - ymin) * zoom + 'px',
         })
-        board.attr('id', Board.UniqueId_());
+        board.attr('id', Board.uniqueId_());
 
         var prev = $('<button>&lt;&lt;</button>').click(() => this.prev());
         var next = $('<button>&gt;&gt;</button>').click(() => this.next());
@@ -90,10 +90,15 @@ export class Board {
         var e = this.board_.create(elementType, parents.slice(), attributes);
         if (name != '') {
             e.setName(name);
-            e.setLabel(name);
-            e.label.setAttribute({visible: false});
-            e.on('over', () => e.label.setAttribute({visible: true}));
-            e.on('out', () => e.label.setAttribute({visible: false}));
+            if (attributes.showLabel === false) {
+                e.setLabel('');
+                e.label.setAttribute({visible: false});
+            } else {
+                e.setLabel(name);
+                e.label.setAttribute({visible: false});
+                e.on('over', () => e.label.setAttribute({visible: true}));
+                e.on('out', () => e.label.setAttribute({visible: false}));
+            }
         }
         return e;
     }
@@ -139,6 +144,17 @@ export class Board {
         this.segment([b, c], '', {dash: 2}, FLAG_SKIP);
         this.angle([a, b, c], '', {}, FLAG_SKIP);
         this.bisector(parents, name, attributes, flag);
+    }
+
+    copySegment(parents, name='', attributes={}, flag=0) {
+        const dotted_line_attr = {showLabel: false, dash: 2, color: 'grey'};
+        var [a, b, c] = parents;
+        const segment_id = Board.uniqueId_();
+        this.segment([a, b], segment_id, dotted_line_attr, FLAG_SKIP);
+        const point_id = Board.uniqueId_();
+        this.parallelpoint([a, b, c], point_id, {visible: false, withLabel: false});
+        this.segment([c, point_id], '', dotted_line_attr, FLAG_SKIP);
+        this.circle([c, point_id], name, attributes, flag);
     }
 };
 

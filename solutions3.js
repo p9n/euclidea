@@ -42,13 +42,11 @@ export function Iota2_L(e) {
     board.line(['C', 'A'], 'L1');
     board.intersection(['C2', 'L1', 0], 'E');
     board.intersection(['C2', 'L1', 1], 'F');
-    board.line(['E', 'F'], 'L2', {visible: false}, Board.FLAG_SKIP);
     board.intersection(['C1', 'L1', 0], 'G');
     board.intersection(['C1', 'L1', 1], 'H');
-    board.circle(['G', 'L2'], 'C4');
+    board.copySegment(['E', 'F', 'G'], 'C4');
     board.intersection(['C4', 'L1', 1], 'I');
-    board.line(['H', 'I'], 'L3', {visible: false}, Board.FLAG_SKIP);
-    board.circle(['A', 'L3'], 'C5');
+    board.copySegment(['H', 'I', 'A'], 'C5');
     board.intersection(['C3', 'C5', 1], 'J');
     board.line(['A', 'J'], 'L4');
 
@@ -110,13 +108,12 @@ export function Iota3_L(e) {
     board.line(['C', 'A'], 'L1');
     board.intersection(['C2', 'L1', 0], 'E');
     board.intersection(['C2', 'L1', 1], 'F');
-    board.line(['E', 'F'], 'L2', {visible: false}, Board.FLAG_SKIP);
     board.intersection(['C1', 'L1', 0], 'G');
     board.intersection(['C1', 'L1', 1], 'H');
-    board.circle(['G', 'L2'], 'C4');
+    board.copySegment(['E', 'F', 'G'], 'C4');
     board.intersection(['C4', 'L1', 0], 'I');
     board.line(['H', 'I'], 'L3', {visible: false}, Board.FLAG_SKIP);
-    board.circle(['A', 'L3'], 'C5');
+    board.copySegment(['H', 'I', 'A'], 'C5');
     board.intersection(['C3', 'C5', 1], 'J');
     board.line(['A', 'J'], 'L4');
 
@@ -223,8 +220,7 @@ export function Iota6_L(e) {
     board.circle(['A', 'C'], 'C1');
     board.line(['A', 'C'], 'L2');
     board.otherintersection(['C1', 'L2', 'C'], 'D');
-    board.line(['C', 'D'], 'L3', {visible: false}, Board.FLAG_SKIP);
-    board.circle(['B', 'L3'], 'C2');
+    board.copySegment(['C', 'D', 'B'], 'C2');
     board.intersection(['C1', 'C2', 1], 'E');
     board.angleBisector(['A', 'E', 'B'], 'L4');
     board.intersection(['L1', 'L4'], 'F');
@@ -327,9 +323,8 @@ export function Iota8_L(e) {
     board.line(['D', 'A'], 'L1');
     board.intersection(['L1', 'C1', 0], 'E');
     board.intersection(['L1', 'C1', 1], 'F');
-    board.segment(['E', 'F'], 'L2', {visible: false});
     board.otherintersection(['L1', 'C2', 'D'], 'G');
-    board.circle(['G', 'L2'], 'C3');
+    board.copySegment(['E', 'F', 'G'], 'C3');
     board.intersection(['C1', 'C3'], 'H');
     board.line(['D', 'H'], 'L3');
 
