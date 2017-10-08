@@ -481,3 +481,56 @@ export function Iota10_E(e) {
 
     board.renderAll();
 }
+
+export function Iota11_L(e) {
+    var board = new Board.Board(e, -2, 3, -1.5, 1.5, 100);
+
+    // input
+    board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+    board.point([0, 0.63], 'B', {}, Board.FLAG_INIT);
+    board.point([-1.3, 0], 'C', {}, Board.FLAG_INIT);
+    board.circle(['A', 'B'], 'C1', {}, Board.FLAG_INIT);
+
+    // steps
+    board.line(['A', 'C'], 'L1');
+    board.circle(['A', 'C'], 'C2');
+    board.intersection(['L1', 'C1', 0], 'D');
+    board.intersection(['L1', 'C1', 1], 'E');
+    board.otherintersection(['L1', 'C2', 'C'], 'F');
+    board.copySegment(['D', 'E', 'F'], 'C3');
+    board.intersection(['C1', 'C3', 0], 'G');
+    board.line(['C', 'G'], 'L2');
+
+    // solution
+    board.otherintersection(['C1', 'L2', 'G'], 'H', {}, Board.FLAG_FINAL);
+    board.segment(['C', 'G'], '', {}, Board.FLAG_FINAL);
+
+    board.renderAll();
+}
+
+export function Iota11_E(e) {
+    var board = new Board.Board(e, -2, 3, -2, 2, 100);
+
+    // input
+    board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+    board.point([0, 0.63], 'B', {}, Board.FLAG_INIT);
+    board.point([-1.3, 0], 'C', {}, Board.FLAG_INIT);
+    board.circle(['A', 'B'], 'C1', {}, Board.FLAG_INIT);
+
+    // steps
+    board.line(['A', 'C'], 'L1');
+    board.circle(['A', 'C'], 'C2');
+    board.intersection(['L1', 'C1', 1], 'D');
+    board.circle(['D', 'C'], 'C3');
+    board.otherintersection(['L1', 'C2', 'C'], 'E');
+    board.otherintersection(['L1', 'C3', 'C'], 'F');
+    board.circle(['E', 'F'], 'C4');
+    board.intersection(['C1', 'C4', 0], 'G');
+    board.line(['C', 'G'], 'L2');
+
+    // solution
+    board.otherintersection(['C1', 'L2', 'G'], 'H', {}, Board.FLAG_FINAL);
+    board.segment(['C', 'G'], '', {}, Board.FLAG_FINAL);
+
+    board.renderAll();
+}
