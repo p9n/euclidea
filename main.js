@@ -56,11 +56,18 @@ const ITEMS = [
 
 function InitNav() {
   const sidenav = $('#sidenav');
+  const title_re = /^(\d+-\d+) .* \((.*)\)$/;
   for (let [title, sol] of ITEMS) {
     const item = $('<div></div>');
     item.text(title);
     item.click((e) => HandleClick(e, sol));
     item.addClass('tab');
+
+    let [unused_str, problem_no, steps] = title_re.exec(title);
+    item.addClass('sol-' + problem_no);
+    if (steps.indexOf('L') != -1) item.addClass('sol-' + problem_no + '-L');
+    if (steps.indexOf('E') != -1) item.addClass('sol-' + problem_no + '-E');
+
     sidenav.append(item);
   }
 }
@@ -78,5 +85,11 @@ function HandleClick(e, sol) {
   sol(container);
 }
 
+function SetInitialBoard() {
+  var elem = $('.sol-' + location.hash.substr(1));
+  if (elem.length > 0) elem[0].click();
+}
+
 $(document).ready(InitNav);
-$(document).ready(Board.SetDefaultOptions());
+$(document).ready(Board.SetDefaultOptions);
+$(document).ready(SetInitialBoard);
