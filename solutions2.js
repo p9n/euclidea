@@ -66,14 +66,12 @@ export function Theta7_L(e) {
     board.perpendicular(['L3', 'B'], 'L4');
     board.intersection(['L3', 'L4'], 'D', {visible: false});
     board.mirrorpoint(['B', 'D'], 'E', {visible: false});
-    board.angle(['E', 'B', 'A'], '', {}, Board.FLAG_SKIP);
     board.angleBisector(['E', 'B', 'A'], 'L5');
     board.intersection(['L2', 'L5'], 'F');
     board.perpendicular(['L3', 'F'], 'L6');
     board.perpendicular(['L2', 'F'], 'L7');
     board.intersection(['L4', 'L7'], 'G');
-    board.midpoint(['B', 'G'], 'H');
-    board.perpendicular(['L4', 'H'], 'L8');
+    board.perpendicularBisector(['B', 'G'], 'L8');
     board.intersection(['L5', 'L8'], 'I');
     board.perpendicular(['L7', 'I'], 'L9');
     board.intersection(['L3', 'L5'], 'J');

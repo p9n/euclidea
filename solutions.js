@@ -47,15 +47,15 @@ export function Gamma9(e) {
     board.segment(['D', 'A'], 'L4', {}, Board.FLAG_INIT);
 
     // steps
-    board.midpoint(['A', 'D'], 'E');
-    board.perpendicular(['L4', 'E'], '');
-    board.midpoint(['B', 'C'], 'F');
-    board.perpendicular(['L2', 'F'], '');
-    board.line(['E', 'F'], 'L5');
+    board.perpendicularBisector(['A', 'D'], 'L5');
+    board.intersection(['L4', 'L5'], 'E');
+    board.perpendicularBisector(['B', 'C'], 'L6');
+    board.intersection(['L2', 'L6'], 'F');
+    board.line(['E', 'F'], 'L7');
+    board.perpendicularBisector(['E', 'F'], 'L8');
 
     // solution
-    board.midpoint(['E', 'F'], 'G', {}, Board.FLAG_FINAL);
-    board.perpendicular(['L5', 'G'], '');
+    board.intersection(['L7', 'L8'], 'G', {}, Board.FLAG_FINAL);
 
     board.renderAll();
 }
@@ -391,8 +391,8 @@ export function Zeta9(e) {
     board.segment(['C', 'A'], 'L3', {}, Board.FLAG_INIT);
 
     // steps
-    board.midpoint(['A', 'B'], 'F');
-    board.perpendicular(['L1', 'F'], 'L4');
+    board.perpendicularBisector(['A', 'B'], 'L4');
+    board.intersection(['L1', 'L4'], 'F');
     board.circle(['F', 'A'], 'C3');
     board.otherintersection(['L2', 'C3', 'B'], 'G');
     board.otherintersection(['L3', 'C3', 'A'], 'H');

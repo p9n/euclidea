@@ -156,6 +156,14 @@ export class Board {
         this.segment([c, point_id], '', dotted_line_attr, FLAG_SKIP);
         this.circle([c, point_id], name, attributes, flag);
     }
+
+    perpendicularBisector(parents, name='', attributes={}, flag=0) {
+      const segment_id = Board.uniqueId_();
+      this.segment(parents, segment_id, {visible: false}, FLAG_SKIP);
+      const point_id = Board.uniqueId_();
+      this.midpoint([segment_id], point_id, {visible: false});
+      this.perpendicular([segment_id, point_id], name, attributes, flag);
+    }
 };
 
 Board.counter_ = 0;
