@@ -42,6 +42,8 @@ const ITEMS = [
     ['9-7 Segment Trisection* (8E)', Solutions3.Iota7],
     ['9-8 Chord Trisection (3L)', Solutions3.Iota8_L],
     ['9-8 Chord Trisection (3E)', Solutions3.Iota8_E],
+    ['9-9 Ratio 1 to 5 (4L)', Solutions3.Iota9_L],
+    ['9-9 Ratio 1 to 5 (5E)', Solutions3.Iota9_E],
 ]
 
 function InitNav() {

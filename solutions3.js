@@ -372,3 +372,52 @@ export function Iota8_E(e) {
 
     board.renderAll();
 }
+
+export function Iota9_L(e) {
+    var board = new Board.Board(e, -3, 3, -3, 3, 100);
+
+    // input
+    board.point([-1, 0], 'A', {}, Board.FLAG_INIT);
+    board.point([1, 0], 'B', {}, Board.FLAG_INIT);
+    board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+
+    // steps
+    board.perpendicularBisector(['A', 'B'], 'L2');
+    board.intersection(['L1', 'L2'], 'C');
+    board.copySegment(['A', 'B', 'C'], 'C1');
+    board.intersection(['C1', 'L2', 1], 'D');
+    board.line(['A', 'D'], 'L3');
+    board.otherintersection(['C1', 'L3', 'D'], 'E');
+    board.otherintersection(['C1', 'L2', 'D'], 'F');
+    board.angleBisector(['B', 'F', 'E'], 'L4');
+
+    // solution
+    board.intersection(['L1', 'L4'], 'G', {}, Board.FLAG_FINAL);
+
+    board.renderAll();
+}
+
+export function Iota9_E(e) {
+    var board = new Board.Board(e, -2, 4, -3, 3, 100);
+
+    // input
+    board.point([-1, 0], 'A', {}, Board.FLAG_INIT);
+    board.point([-0.3, 0], 'B', {}, Board.FLAG_INIT);
+    board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+
+    // steps
+    board.line(['A', 'B'], 'L2');
+    board.circle(['A', 'B'], 'C1');
+    board.otherintersection(['C1', 'L2', 'B'], 'C');
+    board.circle(['B', 'C'], 'C2');
+    board.otherintersection(['C2', 'L2', 'C'], 'D');
+    board.circle(['D', 'A'], 'C3');
+    board.intersection(['C1', 'C3', 0], 'E');
+    board.intersection(['C1', 'C3', 1], 'F');
+    board.line(['E', 'F'], 'L3');
+
+    // solution
+    board.intersection(['L1', 'L3'], 'G', {}, Board.FLAG_FINAL);
+
+    board.renderAll();
+}
