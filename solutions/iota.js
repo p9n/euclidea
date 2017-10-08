@@ -1,4 +1,4 @@
-import * as Board from './board.js';
+import * as Board from '../board.js';
 
 export function Iota1(e) {
   var board = new Board.Board(e, -2.5, 3.5, -2.5, 2.5, 100);

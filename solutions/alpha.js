@@ -1,4 +1,4 @@
-import * as Board from './board.js';
+import * as Board from '../board.js';
 
 export function Alpha7(e) {
   var board = new Board.Board(e, -3, 3, -1.5, 2.5, 100);

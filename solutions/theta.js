@@ -1,4 +1,4 @@
-import * as Board from './board.js';
+import * as Board from '../board.js';
 
 export function Theta3(e) {
   var board = new Board.Board(e, -1.5, 2, -2, 2, 120);
