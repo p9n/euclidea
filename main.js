@@ -48,6 +48,8 @@ const ITEMS = [
   ['9-10 Three Circles - 1 (10E)', Solutions3.Iota10_E],
   ['9-11 Chord Bisection (4L)', Solutions3.Iota11_L],
   ['9-11 Chord Bisection (5E)', Solutions3.Iota11_E],
+  ['9-12 Three Circles - 2 (9L)', Solutions3.Iota12_L],
+  ['9-12 Three Circles - 2 (14E)', Solutions3.Iota12_E],
   ];
 
 function InitNav() {

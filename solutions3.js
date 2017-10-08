@@ -535,3 +535,72 @@ export function Iota11_E(e) {
   board.renderAll();
 }
 
+export function Iota12_L(e) {
+  var board = new Board.Board(e, -2, 3.5, -2.5, 2.5, 100);
+
+  // input
+  board.point([0.4, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([1.51, 0], 'B', {}, Board.FLAG_INIT);
+  board.point([1.03, -0.93], 'C', {}, Board.FLAG_INIT);
+
+  // steps
+  board.perpendicularBisector(['A', 'C'], 'L1');
+  board.perpendicularBisector(['B', 'C'], 'L2');
+  board.intersection(['L1', 'L2'], 'D');
+  board.line(['C', 'D'], 'L3');
+  board.perpendicular(['L3', 'C'], 'L4');
+  board.intersection(['L1', 'L4'], 'E');
+  board.circle(['E', 'C']);
+  board.intersection(['L2', 'L4'], 'F');
+  board.circle(['F', 'C']);
+  board.line(['E', 'A'], 'L5');
+  board.line(['F', 'B'], 'L6');
+  board.intersection(['L5', 'L6'], 'G');
+  board.circle(['G', 'A']);
+
+  // solution
+  board.circle(['E', 'C'], '', {}, Board.FLAG_FINAL);
+  board.circle(['F', 'C'], '', {}, Board.FLAG_FINAL);
+  board.circle(['G', 'A'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
+export function Iota12_E(e) {
+  var board = new Board.Board(e, -2, 3.5, -2.5, 2.5, 100);
+
+  // input
+  board.point([0.4, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([1.51, 0], 'B', {}, Board.FLAG_INIT);
+  board.point([1.03, -0.93], 'C', {}, Board.FLAG_INIT);
+
+  // steps
+  board.circle(['A', 'C'], 'C1');
+  board.circle(['C', 'A'], 'C2');
+  board.intersection(['C1', 'C2', 0], 'D');
+  board.intersection(['C1', 'C2', 1], 'E');
+  board.line(['D', 'E'], 'L1');
+  board.perpendicularBisector(['B', 'C'], 'L2');
+  board.intersection(['L1', 'L2'], 'F');
+  board.line(['C', 'F'], 'L3');
+  board.otherintersection(['L3', 'C1', 'C'], 'G');
+  board.line(['G', 'A'], 'L4');
+  board.otherintersection(['L4', 'C1', 'G'], 'H');
+  board.line(['C', 'H'], 'L5');
+  board.intersection(['L1', 'L5'], 'I');
+  board.circle(['I', 'C']);
+  board.intersection(['L2', 'L5'], 'J');
+  board.circle(['J', 'C']);
+  board.line(['I', 'A'], 'L6');
+  board.line(['J', 'B'], 'L7');
+  board.intersection(['L6', 'L7'], 'K');
+  board.circle(['K', 'A']);
+
+  // solution
+  board.circle(['I', 'C'], '', {}, Board.FLAG_FINAL);
+  board.circle(['J', 'C'], '', {}, Board.FLAG_FINAL);
+  board.circle(['K', 'A'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+

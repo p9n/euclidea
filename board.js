@@ -158,8 +158,9 @@ export class Board {
   }
 
   perpendicularBisector(parents, name='', attributes={}, flag=0) {
+    const dotted_line_attr = {showLabel: false, dash: 2, color: 'grey'};
     const segment_id = Board.uniqueId_();
-    this.segment(parents, segment_id, {visible: false}, FLAG_SKIP);
+    this.segment(parents, segment_id, dotted_line_attr, FLAG_SKIP);
     const point_id = Board.uniqueId_();
     this.midpoint([segment_id], point_id, {visible: false});
     this.perpendicular([segment_id, point_id], name, attributes, flag);
