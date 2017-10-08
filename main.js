@@ -1,6 +1,7 @@
 import * as Alpha from './solutions/alpha.js';  // alpha to eta
 import * as Theta from './solutions/theta.js';
 import * as Iota from './solutions/iota.js';
+import * as Kappa from './solutions/kappa.js';
 import * as Board from './board.js';
 
 const ITEMS = [
@@ -50,6 +51,7 @@ const ITEMS = [
   ['9-11 Chord Bisection (5E)', Iota.Iota11_E],
   ['9-12 Three Circles - 2 (9L)', Iota.Iota12_L],
   ['9-12 Three Circles - 2 (14E)', Iota.Iota12_E],
+  ['10-1 Fourth Proportional (3E)', Kappa.Kappa1],
   ];
 
 function InitNav() {

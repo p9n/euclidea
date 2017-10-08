@@ -90,9 +90,11 @@ export class Board {
     var e = this.board_.create(elementType, parents.slice(), attributes);
     if (name != '') {
       e.setName(name);
-      if (attributes.showLabel === false) {
+      if (attributes.withLabel === false) {
         e.setLabel('');
         e.label.setAttribute({visible: false});
+      } else if (attributes.withLabel === true) {
+        e.setLabel(name);
       } else {
         e.setLabel(name);
         e.label.setAttribute({visible: false});
@@ -147,7 +149,7 @@ export class Board {
   }
 
   copySegment(parents, name='', attributes={}, flag=0) {
-    const dotted_line_attr = {showLabel: false, dash: 2, color: 'grey'};
+    const dotted_line_attr = {withLabel: false, dash: 2, color: 'grey'};
     var [a, b, c] = parents;
     const segment_id = Board.uniqueId_();
     this.segment([a, b], segment_id, dotted_line_attr, FLAG_SKIP);
@@ -158,7 +160,7 @@ export class Board {
   }
 
   perpendicularBisector(parents, name='', attributes={}, flag=0) {
-    const dotted_line_attr = {showLabel: false, dash: 2, color: 'grey'};
+    const dotted_line_attr = {withLabel: false, dash: 2, color: 'grey'};
     const segment_id = Board.uniqueId_();
     this.segment(parents, segment_id, dotted_line_attr, FLAG_SKIP);
     const point_id = Board.uniqueId_();
