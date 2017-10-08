@@ -421,3 +421,63 @@ export function Iota9_E(e) {
 
     board.renderAll();
 }
+
+export function Iota10_L(e) {
+    var board = new Board.Board(e, -1.5, 3, -3, 1.5, 100);
+
+    // input
+    board.point([0.4, 0], 'A', {}, Board.FLAG_INIT);
+    board.point([1.51, 0], 'B', {}, Board.FLAG_INIT);
+    board.point([0.54, 0.88], 'C', {}, Board.FLAG_INIT);
+
+    // steps
+    board.line(['A', 'C'], 'L1');
+    board.circle(['A', 'B'], 'C1');
+    board.intersection(['C1', 'L1', 1], 'D');
+    board.copySegment(['B', 'C', 'D'], 'C2');
+    board.intersection(['C2', 'L1', 0], 'E');
+    board.perpendicularBisector(['C', 'E'], 'L2');
+    board.intersection(['L1', 'L2'], 'F');
+    board.copySegment(['C', 'F', 'A'], 'C3');
+    board.intersection(['C3', 'L1', 0], 'G');
+    board.circle(['C', 'G']);
+    board.otherintersection(['C3', 'L1', 'G'], 'H');
+    board.copySegment(['D', 'H', 'B']);
+
+    // solution
+    board.circle(['A', 'G'], '', {}, Board.FLAG_FINAL);
+    board.circle(['C', 'G'], '', {}, Board.FLAG_FINAL);
+    board.copySegment(['D', 'H', 'B'], '', {}, Board.FLAG_FINAL);
+
+    board.renderAll();
+}
+
+export function Iota10_E(e) {
+    var board = new Board.Board(e, -1, 3, -1, 2, 100);
+
+    // input
+    board.point([0.4, 0], 'A', {}, Board.FLAG_INIT);
+    board.point([1.51, 0], 'B', {}, Board.FLAG_INIT);
+    board.point([0.54, 0.88], 'C', {}, Board.FLAG_INIT);
+
+    // steps
+    board.line(['A', 'B'], 'L1');
+    board.line(['C', 'B'], 'L2');
+    board.circle(['C', 'A'], 'C1');
+    board.intersection(['C1', 'L2', 0], 'D');
+    board.circle(['B', 'D'], 'C2');
+    board.intersection(['C2', 'L1', 1], 'E');
+    board.perpendicularBisector(['A', 'E'], 'L3');
+    board.intersection(['L1', 'L3'], 'F');
+    board.circle(['A', 'F']);
+    board.circle(['B', 'F'], 'C3');
+    board.intersection(['C3', 'L2', 1], 'G');
+    board.circle(['C', 'G']);
+
+    // solution
+    board.circle(['A', 'F'], '', {}, Board.FLAG_FINAL);
+    board.circle(['B', 'F'], '', {}, Board.FLAG_FINAL);
+    board.circle(['C', 'G'], '', {}, Board.FLAG_FINAL);
+
+    board.renderAll();
+}
