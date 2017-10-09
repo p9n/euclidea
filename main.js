@@ -59,23 +59,37 @@ const ITEMS = [
 function InitNav() {
   const sidenav = $('#sidenav');
   const title_re = /^(\d+-\d+) .* \((.*)\)$/;
+  const callback_map = {};
   for (let [title, sol] of ITEMS) {
-    const item = $('<div></div>');
+    const item = $('<a></a>');
     item.text(title);
-    item.click((e) => HandleClick(e, sol));
+    // item.click((e) => HandleClick(item, sol));
     item.addClass('tab');
 
     let [unused_str, problem_no, steps] = title_re.exec(title);
+    let suffix = '';
+    if (steps.indexOf('L') != -1) suffix = '-L';
+    else if (steps.indexOf('E') != -1) suffix = '-E';
+    let hash = problem_no + suffix;
+    item.attr('href', '#' + hash);
+    callback_map[hash] = sol;
+    item.attr('id', 'id-' + hash);
+
+    /*
     item.addClass('sol-' + problem_no);
     if (steps.indexOf('L') != -1) item.addClass('sol-' + problem_no + '-L');
     if (steps.indexOf('E') != -1) item.addClass('sol-' + problem_no + '-E');
+    */
 
     sidenav.append(item);
   }
+
+  $(window).on('hashchange', () => HandleHashChange(callback_map));
 }
 
-function HandleClick(e, sol) {
-  let target = $(e.target);
+function HandleHashChange(callback_map) {
+  let hash = location.hash.substr(1);
+  let target = $('#id-' + hash);
   let container = $('#jxg-container');
 
   if (target.hasClass('active')) {
@@ -84,14 +98,9 @@ function HandleClick(e, sol) {
 
   $('.active').removeClass('active');
   target.addClass('active');
-  sol(container);
-}
-
-function SetInitialBoard() {
-  var elem = $('.sol-' + location.hash.substr(1));
-  if (elem.length > 0) elem[0].click();
+  callback_map[hash](container);
 }
 
 $(document).ready(InitNav);
 $(document).ready(Board.SetDefaultOptions);
-$(document).ready(SetInitialBoard);
+$(document).ready(() => $(window).trigger('hashchange'));
