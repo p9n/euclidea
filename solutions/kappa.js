@@ -23,3 +23,56 @@ export function Kappa1(e) {
 
   board.renderAll();
 }
+
+export function Kappa2_L(e) {
+  var board = new Board.Board(e, -0.5, 2.5, -2, 1.5, 100);
+
+  // input
+  board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([2.1, 0], 'B', {}, Board.FLAG_INIT);
+  board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+  board.glider([0.6, 0, 'L1'], 'C', {}, Board.FLAG_INIT);
+  board.point([1.53, 1.1], 'D', {}, Board.FLAG_INIT);
+  board.line(['C', 'D'], 'L2', {straightFirst: false}, Board.FLAG_INIT);
+
+  // steps
+  board.perpendicularBisector(['A', 'B'], 'L3');
+  board.perpendicular(['L2', 'C'], 'L4');
+  board.intersection(['L3', 'L4'], 'E');
+  board.circle(['E', 'A'], 'C1');
+  board.intersection(['C1', 'L2', 0], 'F');
+
+  // solution
+  board.segment(['C', 'F'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
+export function Kappa2_E(e) {
+  var board = new Board.Board(e, -0.5, 3.5, -2, 1.5, 100);
+
+  // input
+  board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([2.1, 0], 'B', {}, Board.FLAG_INIT);
+  board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+  board.glider([0.6, 0, 'L1'], 'C', {}, Board.FLAG_INIT);
+  board.point([1.53, 1.1], 'D', {}, Board.FLAG_INIT);
+  board.line(['C', 'D'], 'L2', {straightFirst: false}, Board.FLAG_INIT);
+
+  // steps
+  board.circle(['B', 'C'], 'C1');
+  board.circle(['C', 'A'], 'C2');
+  board.otherintersection(['C2', 'L1', 'A'], 'E');
+  board.circle(['E', 'C'], 'C3');
+  board.intersection(['C2', 'C3', 0], 'F');
+  board.intersection(['C2', 'C3', 1], 'G');
+  board.line(['F', 'G'], 'L3');
+  board.intersection(['C1', 'L3', 0], 'H');
+  board.circle(['C', 'H'], 'C4');
+  board.intersection(['C4', 'L2', 0], 'I');
+
+  // solution
+  board.segment(['C', 'I'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}

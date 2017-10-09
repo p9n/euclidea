@@ -52,6 +52,8 @@ const ITEMS = [
   ['9-12 Three Circles - 2 (9L)', Iota.Iota12_L],
   ['9-12 Three Circles - 2 (14E)', Iota.Iota12_E],
   ['10-1 Fourth Proportional (3E)', Kappa.Kappa1],
+  ['10-2 Geometric Mean of Segments (3L)', Kappa.Kappa2_L],
+  ['10-2 Geometric Mean of Segments (5E)', Kappa.Kappa2_E],
   ];
 
 function InitNav() {
