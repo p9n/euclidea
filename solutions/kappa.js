@@ -76,3 +76,51 @@ export function Kappa2_E(e) {
 
   board.renderAll();
 }
+
+export function Kappa3_L(e) {
+  var board = new Board.Board(e, -2.5, 2.5, -2, 2, 100);
+
+  // input
+  board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([1.5, 0], 'B', {}, Board.FLAG_INIT);
+  board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+
+  // steps
+  board.line(['A', 'B'], 'L2');
+  board.perpendicularBisector(['A', 'B'], 'L3');
+  board.intersection(['L1', 'L3'], 'C');
+  board.copySegment(['A', 'B', 'C'], 'C1');
+  board.intersection(['C1', 'L3', 0], 'D');
+  board.intersection(['C1', 'L2', 1], 'E');
+  board.copySegment(['A', 'D', 'E'], 'C2');
+
+  // solution
+  board.intersection(['C2', 'L2', 0], 'F', {}, Board.FLAG_FINAL);
+  
+  board.renderAll();
+}
+
+export function Kappa3_E(e) {
+  var board = new Board.Board(e, -2, 2.5, -1.5, 2.5, 100);
+
+  // input
+  board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([1, 0], 'B', {}, Board.FLAG_INIT);
+  board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+
+  // steps
+  board.circle(['A', 'B'], 'C1');
+  board.circle(['B', 'A'], 'C2');
+  board.intersection(['C1', 'C2', 1], 'C');
+  board.circle(['C', 'A'], 'C3');
+  board.otherintersection(['C2', 'C3', 'A'], 'D');
+  board.line(['A', 'D'], 'L2');
+  board.otherintersection(['C1', 'C3', 'B'], 'E');
+  board.intersection(['L2', 'C1'], 'F');
+  board.circle(['E', 'F'], 'C4');
+
+  // solution
+  board.intersection(['C4', 'L1', 0], 'G', {}, Board.FLAG_FINAL);
+  
+  board.renderAll();
+}

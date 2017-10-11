@@ -54,6 +54,8 @@ const ITEMS = [
   ['10-1 Fourth Proportional (3E)', Kappa.Kappa1],
   ['10-2 Geometric Mean of Segments (3L)', Kappa.Kappa2_L],
   ['10-2 Geometric Mean of Segments (5E)', Kappa.Kappa2_E],
+  ['10-3 Golden Section (4L)', Kappa.Kappa3_L],
+  ['10-3 Golden Section (5E)', Kappa.Kappa3_E],
   ];
 
 function InitNav() {
