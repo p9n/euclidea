@@ -1,6 +1,6 @@
 import * as Board from '../board.js';
 
-export function Kappa1(e) {
+function Kappa1(e) {
   var board = new Board.Board(e, -0.5, 3.5, -0.5, 2.5, 100);
 
   // input
@@ -24,7 +24,7 @@ export function Kappa1(e) {
   board.renderAll();
 }
 
-export function Kappa2_L(e) {
+function Kappa2_L(e) {
   var board = new Board.Board(e, -0.5, 2.5, -2, 1.5, 100);
 
   // input
@@ -48,7 +48,7 @@ export function Kappa2_L(e) {
   board.renderAll();
 }
 
-export function Kappa2_E(e) {
+function Kappa2_E(e) {
   var board = new Board.Board(e, -0.5, 3.5, -2, 1.5, 100);
 
   // input
@@ -77,7 +77,7 @@ export function Kappa2_E(e) {
   board.renderAll();
 }
 
-export function Kappa3_L(e) {
+function Kappa3_L(e) {
   var board = new Board.Board(e, -2.5, 2.5, -2, 2, 100);
 
   // input
@@ -100,7 +100,7 @@ export function Kappa3_L(e) {
   board.renderAll();
 }
 
-export function Kappa3_E(e) {
+function Kappa3_E(e) {
   var board = new Board.Board(e, -2, 2.5, -1.5, 2.5, 100);
 
   // input
@@ -124,3 +124,11 @@ export function Kappa3_E(e) {
   
   board.renderAll();
 }
+
+export const ITEMS = [
+  ['10-1 Fourth Proportional (3E)', Kappa1],
+  ['10-2 Geometric Mean of Segments (3L)', Kappa2_L],
+  ['10-2 Geometric Mean of Segments (5E)', Kappa2_E],
+  ['10-3 Golden Section (4L)', Kappa3_L],
+  ['10-3 Golden Section (5E)', Kappa3_E],
+];

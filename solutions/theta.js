@@ -1,6 +1,6 @@
 import * as Board from '../board.js';
 
-export function Theta3(e) {
+function Theta3(e) {
   var board = new Board.Board(e, -1.5, 2, -2, 2, 120);
 
   // input
@@ -22,7 +22,7 @@ export function Theta3(e) {
   board.renderAll();
 }
 
-export function Theta5(e) {
+function Theta5(e) {
   var board = new Board.Board(e, -0.5, 5, -2, 3.5, 100);
 
   // input
@@ -51,7 +51,7 @@ export function Theta5(e) {
   board.renderAll();
 }
 
-export function Theta7_L(e) {
+function Theta7_L(e) {
   var board = new Board.Board(e, -3, 4, -2, 4.5, 100);
 
   // input
@@ -95,7 +95,7 @@ export function Theta7_L(e) {
   board.renderAll();
 }
 
-export function Theta7_E(e) {
+function Theta7_E(e) {
   var board = new Board.Board(e, -2, 3, -2, 3, 100);
 
   // input
@@ -149,7 +149,7 @@ export function Theta7_E(e) {
   board.renderAll();
 }
 
-export function Theta8(e) {
+function Theta8(e) {
   var board = new Board.Board(e, -0.5, 4, -0.5, 2.5, 100);
 
   // input
@@ -183,7 +183,7 @@ export function Theta8(e) {
   board.renderAll();
 }
 
-export function Theta9(e) {
+function Theta9(e) {
   var board = new Board.Board(e, -2.5, 3, -2, 2, 100);
 
   // input
@@ -219,7 +219,7 @@ export function Theta9(e) {
   board.renderAll();
 }
 
-export function Theta10(e) {
+function Theta10(e) {
   var board = new Board.Board(e, -2.5, 3, -1, 2, 100);
 
   // input
@@ -247,7 +247,7 @@ export function Theta10(e) {
   board.renderAll();
 }
 
-export function Theta11(e) {
+function Theta11(e) {
   var board = new Board.Board(e, -0.5, 4, -1, 2, 120);
 
   // input
@@ -278,7 +278,7 @@ export function Theta11(e) {
   board.renderAll();
 }
 
-export function Theta12(e) {
+function Theta12(e) {
   var board = new Board.Board(e, -1.5, 2, -1, 2, 120);
 
   // input
@@ -306,3 +306,15 @@ export function Theta12(e) {
 
   board.renderAll();
 }
+
+export const ITEMS = [
+  ['8-2 Third Proportional (3L 3E)', Theta3],
+  ['8-3 Harmonic Mean of Trapezoid bases (5E)', Theta5],
+  ['8-7 Regular Octagon (9L)', Theta7_L],
+  ['8-7 Regular Octagon (13E)', Theta7_E],
+  ['8-8 Trisection by Trapezoid Diagonals (5E)', Theta8],
+  ['8-9 Minimum Perimeter - 2 (8E)', Theta9],
+  ['8-10 Harmonic Mean of Segments (4E)', Theta10],
+  ['8-11 Triangle by Angle and Centroid (7E)', Theta11],
+  ['8-12 Triangle Mid-Segment (5E)', Theta12],
+];

@@ -1,6 +1,6 @@
 import * as Board from '../board.js';
 
-export function Iota1(e) {
+function Iota1(e) {
   var board = new Board.Board(e, -2.5, 3.5, -2.5, 2.5, 100);
 
   // input
@@ -26,7 +26,7 @@ export function Iota1(e) {
   board.renderAll();
 }
 
-export function Iota2_L(e) {
+function Iota2_L(e) {
   var board = new Board.Board(e, -3.5, 2.5, -2, 2, 100);
 
   // input
@@ -57,7 +57,7 @@ export function Iota2_L(e) {
   board.renderAll();
 }
 
-export function Iota2_E(e) {
+function Iota2_E(e) {
   var board = new Board.Board(e, -3.5, 2.5, -2, 2, 100);
 
   // input
@@ -92,7 +92,7 @@ export function Iota2_E(e) {
   board.renderAll();
 }
 
-export function Iota3_L(e) {
+function Iota3_L(e) {
   var board = new Board.Board(e, -3, 2.5, -2, 2, 100);
 
   // input
@@ -124,7 +124,7 @@ export function Iota3_L(e) {
   board.renderAll();
 }
 
-export function Iota3_E(e) {
+function Iota3_E(e) {
   var board = new Board.Board(e, -3.5, 2.5, -2, 2, 100);
 
   // input
@@ -159,7 +159,7 @@ export function Iota3_E(e) {
   board.renderAll();
 }
 
-export function Iota4(e) {
+function Iota4(e) {
   var board = new Board.Board(e, -2.5, 2.5, -2, 2, 100);
 
   // input
@@ -183,7 +183,7 @@ export function Iota4(e) {
   board.renderAll();
 }
 
-export function Iota5(e) {
+function Iota5(e) {
   var board = new Board.Board(e, -3, 1.5, -2, 2, 100);
 
   // input
@@ -207,7 +207,7 @@ export function Iota5(e) {
   board.renderAll();
 }
 
-export function Iota6_L(e) {
+function Iota6_L(e) {
   var board = new Board.Board(e, -2, 3, -2, 2, 100);
 
   // input
@@ -237,7 +237,7 @@ export function Iota6_L(e) {
   board.renderAll();
 }
 
-export function Iota6_E(e) {
+function Iota6_E(e) {
   var board = new Board.Board(e, -2, 3, -2, 1.5, 100);
 
   // input
@@ -268,7 +268,7 @@ export function Iota6_E(e) {
   board.renderAll();
 }
 
-export function Iota7(e) {
+function Iota7(e) {
   var board = new Board.Board(e, -2, 3, -2, 1.5, 100);
 
   // input
@@ -308,7 +308,7 @@ export function Iota7(e) {
   board.renderAll();
 }
 
-export function Iota8_L(e) {
+function Iota8_L(e) {
   var board = new Board.Board(e, -2, 3, -1.5, 1.5, 100);
 
   // input
@@ -340,7 +340,7 @@ export function Iota8_L(e) {
   board.renderAll();
 }
 
-export function Iota8_E(e) {
+function Iota8_E(e) {
   var board = new Board.Board(e, -2, 3, -1.5, 1.5, 100);
 
   // input
@@ -373,7 +373,7 @@ export function Iota8_E(e) {
   board.renderAll();
 }
 
-export function Iota9_L(e) {
+function Iota9_L(e) {
   var board = new Board.Board(e, -3, 3, -3, 3, 100);
 
   // input
@@ -397,7 +397,7 @@ export function Iota9_L(e) {
   board.renderAll();
 }
 
-export function Iota9_E(e) {
+function Iota9_E(e) {
   var board = new Board.Board(e, -2, 4, -3, 3, 100);
 
   // input
@@ -422,7 +422,7 @@ export function Iota9_E(e) {
   board.renderAll();
 }
 
-export function Iota10_L(e) {
+function Iota10_L(e) {
   var board = new Board.Board(e, -1.5, 3, -3, 1.5, 100);
 
   // input
@@ -452,7 +452,7 @@ export function Iota10_L(e) {
   board.renderAll();
 }
 
-export function Iota10_E(e) {
+function Iota10_E(e) {
   var board = new Board.Board(e, -1, 3, -1, 2, 100);
 
   // input
@@ -482,7 +482,7 @@ export function Iota10_E(e) {
   board.renderAll();
 }
 
-export function Iota11_L(e) {
+function Iota11_L(e) {
   var board = new Board.Board(e, -2, 3, -1.5, 1.5, 100);
 
   // input
@@ -508,7 +508,7 @@ export function Iota11_L(e) {
   board.renderAll();
 }
 
-export function Iota11_E(e) {
+function Iota11_E(e) {
   var board = new Board.Board(e, -2, 3, -2, 2, 100);
 
   // input
@@ -535,7 +535,7 @@ export function Iota11_E(e) {
   board.renderAll();
 }
 
-export function Iota12_L(e) {
+function Iota12_L(e) {
   var board = new Board.Board(e, -2, 3.5, -2.5, 2.5, 100);
 
   // input
@@ -566,7 +566,7 @@ export function Iota12_L(e) {
   board.renderAll();
 }
 
-export function Iota12_E(e) {
+function Iota12_E(e) {
   var board = new Board.Board(e, -2, 3.5, -2.5, 2.5, 100);
 
   // input
@@ -604,3 +604,25 @@ export function Iota12_E(e) {
   board.renderAll();
 }
 
+export const ITEMS = [
+  ['9-1 Tangent of Circle (5E)', Iota1],
+  ['9-2 Outer Tangent (6L)', Iota2_L],
+  ['9-2 Outer Tangent (8E)', Iota2_E],
+  ['9-3 Inner Tangent (6L)', Iota3_L],
+  ['9-3 Inner Tangent (8E)', Iota3_E],
+  ['9-4 Rotation 90° (5L 9E)', Iota4],
+  ['9-5 Rotation 60° (4L 4E)', Iota5],
+  ['9-6 Segment Trisection (5L)', Iota6_L],
+  ['9-6 Segment Trisection (6E)', Iota6_E],
+  ['9-7 Segment Trisection* (8E)', Iota7],
+  ['9-8 Chord Trisection (3L)', Iota8_L],
+  ['9-8 Chord Trisection (3E)', Iota8_E],
+  ['9-9 Ratio 1 to 5 (4L)', Iota9_L],
+  ['9-9 Ratio 1 to 5 (5E)', Iota9_E],
+  ['9-10 Three Circles - 1 (7L)', Iota10_L],
+  ['9-10 Three Circles - 1 (10E)', Iota10_E],
+  ['9-11 Chord Bisection (4L)', Iota11_L],
+  ['9-11 Chord Bisection (5E)', Iota11_E],
+  ['9-12 Three Circles - 2 (9L)', Iota12_L],
+  ['9-12 Three Circles - 2 (14E)', Iota12_E],
+];

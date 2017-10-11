@@ -1,6 +1,6 @@
 import * as Board from '../board.js';
 
-export function Alpha7(e) {
+function Alpha7(e) {
   var board = new Board.Board(e, -3, 3, -1.5, 2.5, 100);
 
   // input
@@ -33,7 +33,7 @@ export function Alpha7(e) {
   board.renderAll();
 }
 
-export function Gamma9(e) {
+function Gamma9(e) {
   var board = new Board.Board(e, -0.5, 3.5, -0.5, 2.4, 100);
 
   // input
@@ -60,7 +60,7 @@ export function Gamma9(e) {
   board.renderAll();
 }
 
-export function Delta2(e) {
+function Delta2(e) {
   var board = new Board.Board(e, -3, 3, -2, 3, 100);
 
   // input
@@ -85,7 +85,7 @@ export function Delta2(e) {
   board.renderAll();
 }
 
-export function Delta4(e) {
+function Delta4(e) {
   var board = new Board.Board(e, -3, 3, -2, 1.5, 100);
 
   // input
@@ -115,7 +115,7 @@ export function Delta4(e) {
   board.renderAll();
 }
 
-export function Delta9(e) {
+function Delta9(e) {
   var board = new Board.Board(e, -2, 3.5, -2.5, 3, 100);
 
   // input
@@ -158,7 +158,7 @@ export function Delta9(e) {
   board.renderAll();
 }
 
-export function Epsilon3(e) {
+function Epsilon3(e) {
   var board = new Board.Board(e, -1.5, 2.5, -1.5, 1.5, 100);
 
   // input
@@ -179,7 +179,7 @@ export function Epsilon3(e) {
   board.renderAll();
 }
 
-export function Epsilon5(e) {
+function Epsilon5(e) {
   var board = new Board.Board(e, -3, 3, -1.5, 3, 100);
 
   // input
@@ -212,7 +212,7 @@ export function Epsilon5(e) {
   board.renderAll();
 }
 
-export function Epsilon7(e) {
+function Epsilon7(e) {
   var board = new Board.Board(e, -3, 3, -1, 2, 100);
 
   // input
@@ -238,7 +238,7 @@ export function Epsilon7(e) {
   board.renderAll();
 }
 
-export function Epsilon8(e) {
+function Epsilon8(e) {
   var board = new Board.Board(e, -3, 3, -2.5, 3.5, 100);
 
   // input
@@ -280,7 +280,7 @@ export function Epsilon8(e) {
   board.renderAll();
 }
 
-export function Epsilon10(e) {
+function Epsilon10(e) {
   var board = new Board.Board(e, -2, 3.5, -1.5, 3, 100);
 
   // input
@@ -313,7 +313,7 @@ export function Epsilon10(e) {
   board.renderAll();
 }
 
-export function Zeta6(e) {
+function Zeta6(e) {
   var board = new Board.Board(e, -3, 2.5, -1.5, 3, 100);
 
   // input
@@ -341,7 +341,7 @@ export function Zeta6(e) {
   board.renderAll();
 }
 
-export function Zeta8(e) {
+function Zeta8(e) {
   var board = new Board.Board(e, -3.5, 2, -1.5, 3, 100);
 
   // input
@@ -379,7 +379,7 @@ export function Zeta8(e) {
   board.renderAll();
 }
 
-export function Zeta9(e) {
+function Zeta9(e) {
   var board = new Board.Board(e, -1.5, 2, -1, 2, 120);
 
   // input
@@ -411,7 +411,7 @@ export function Zeta9(e) {
   board.renderAll();
 }
 
-export function Eta3(e) {
+function Eta3(e) {
   var board = new Board.Board(e, -1.5, 2, -1, 2, 120);
 
   // input
@@ -431,7 +431,7 @@ export function Eta3(e) {
   board.renderAll();
 }
 
-export function Eta7(e) {
+function Eta7(e) {
   var board = new Board.Board(e, -1.5, 2, -1, 2, 120);
 
   // input
@@ -465,7 +465,7 @@ export function Eta7(e) {
   board.renderAll();
 }
 
-export function Eta8(e) {
+function Eta8(e) {
   var board = new Board.Board(e, -0.5, 3, -1, 2, 120);
 
   // input
@@ -493,7 +493,7 @@ export function Eta8(e) {
   board.renderAll();
 }
 
-export function Eta11(e) {
+function Eta11(e) {
   var board = new Board.Board(e, -1.5, 2, -1, 2, 120);
 
   // input
@@ -526,3 +526,23 @@ export function Eta11(e) {
 
   board.renderAll();
 }
+
+export const ITEMS = [
+  ['1-7 Inscribed Square (7E)', Alpha7],
+  ['3-9 Centroid of Quadrilateral (4L 10E)', Gamma9],
+  ['4-2 Angle of 60° - 2 (4E)', Delta2],
+  ['4-4 Equilateral Triangle in Circle (6E)', Delta4],
+  ['4-9 Square by Opposite Midpoints (10E)', Delta9],
+  ['5-3 Line Equidistant from Two Points - 1 (4E)', Epsilon3],
+  ['5-5 Hash (4E)', Epsilon5],
+  ['5-7 Line Equidistant from Two Lines (5E)', Epsilon7],
+  ['5-8 Circumscribed Square (11E)', Epsilon8],
+  ['5-10 Circle Tangent to Square Side (6E)', Epsilon10],
+  ['6-6 Translate Segment (6E)', Zeta6],
+  ['6-8 Hypotenuse and Leg (9E)', Zeta8],
+  ['6-9 Nine Point Circle (9E)', Zeta9],
+  ['7-3 Angle of 75° (3L)', Eta3],
+  ['7-7 Inscribed Circle (8E)', Eta7],
+  ['7-8 Segment by Midpoint (5E)', Eta8],
+  ['7-11 Excircle (8E)', Eta11],
+];
