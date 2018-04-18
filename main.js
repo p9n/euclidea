@@ -2,9 +2,11 @@ import * as Alpha from './solutions/alpha.js';  // alpha to eta
 import * as Theta from './solutions/theta.js';
 import * as Iota from './solutions/iota.js';
 import * as Kappa from './solutions/kappa.js';
+import * as Lambda from './solutions/lambda.js';
 import * as Board from './board.js';
 
-const ITEMS = [].concat(Alpha.ITEMS, Theta.ITEMS, Iota.ITEMS, Kappa.ITEMS);
+const ITEMS = [].concat(Alpha.ITEMS, Theta.ITEMS, Iota.ITEMS, Kappa.ITEMS,
+                        Lambda.ITEMS);
 
 function InitNav() {
   const sidenav = $('#sidenav');
