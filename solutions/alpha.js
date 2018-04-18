@@ -60,6 +60,34 @@ function Gamma9(e) {
   board.renderAll();
 }
 
+function Gamma10(e) {
+  var board = new Board.Board(e, -2.5, 2.5, -2.5, 2.5, 100);
+
+  // input
+  board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([0, -1], 'B', {}, Board.FLAG_INIT);
+  board.circle(['A', 'B'], 'C1', {}, Board.FLAG_INIT);
+  board.glider([-0.8, 0.58, 'C1'], 'C', {}, Board.FLAG_INIT);
+
+  // steps
+  board.circle(['B', 'C'], 'C2');
+  board.otherintersection(['C1', 'C2', 'C'], 'D');
+  board.circle(['C', 'D'], 'C3');
+  board.otherintersection(['C2', 'C3', 'D'], 'E');
+  board.line(['C', 'E'], 'L1');
+  board.line(['A', 'B'], 'L2');
+  board.intersection(['L1', 'L2'], 'F');
+  board.line(['D', 'F'], 'L3');
+  board.perpendicular(['B', 'L2'], 'L4');
+
+  // solution
+  board.intersection(['L1', 'L4'], 'G');
+  board.intersection(['L3', 'L4'], 'H');
+  board.polygon(['F', 'G', 'H'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
 function Delta2(e) {
   var board = new Board.Board(e, -3, 3, -2, 3, 100);
 
@@ -530,6 +558,7 @@ function Eta11(e) {
 export const ITEMS = [
   ['1-7 Inscribed Square (7E)', Alpha7],
   ['3-9 Centroid of Quadrilateral (4L 10E)', Gamma9],
+  ['3-10 Isosceles Triangle by Tangent Points (8E)', Gamma10],
   ['4-2 Angle of 60° - 2 (4E)', Delta2],
   ['4-4 Equilateral Triangle in Circle (6E)', Delta4],
   ['4-9 Square by Opposite Midpoints (10E)', Delta9],

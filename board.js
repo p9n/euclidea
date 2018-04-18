@@ -167,6 +167,13 @@ export class Board {
     this.midpoint([segment_id], point_id, {visible: false});
     this.perpendicular([segment_id, point_id], name, attributes, flag);
   }
+
+  polygon(parents, name='', attributes={}, flag=0) {
+    for (let i = 0; i < parents.length - 1; i++) {
+      this.segment([parents[i], parents[i + 1]], name, attributes, flag);
+    }
+    this.segment([parents[0], parents[parents.length - 1]], name, attributes, flag);
+  }
 };
 
 Board.counter_ = 0;
