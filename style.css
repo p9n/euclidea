@@ -26,8 +26,17 @@ body {
   background-color: #ccc;
 }
 
-.active {
+.active-tab {
   background-color: #4caf50 !important;
   color: white !important;
 }
 
+.tab-header {
+  display: block;
+  padding: 3px 16px 3px 16px;
+  margin: 1px 0px 1px 0px;
+  background-color: #444;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
