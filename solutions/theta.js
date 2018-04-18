@@ -98,7 +98,57 @@ function Theta4_E(e) {
   board.renderAll();
 }
 
+function Theta5_L(e) {
+  var board = new Board.Board(e, -1.5, 2, -1, 2, 120);
+
+  // input
+  board.point([-1, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([1, 0], 'B', {}, Board.FLAG_INIT);
+  board.point([0.4, 1.11], 'C', {}, Board.FLAG_INIT);
+  board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+  board.segment(['B', 'C'], 'L2', {}, Board.FLAG_INIT);
+  board.segment(['C', 'A'], 'L3', {}, Board.FLAG_INIT);
+
+  // steps
+  board.perpendicularBisector(['A', 'B'], 'L4');
+  board.intersection(['L4', 'L1'], 'D');
+  board.angleBisector(['A', 'C', 'B'], 'L5');
+
+  // solution
+  board.parallel(['L5', 'D'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
+function Theta5_E(e) {
+  var board = new Board.Board(e, -1.5, 2, -1, 3, 120);
+
+  // input
+  board.point([-1, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([1, 0], 'B', {}, Board.FLAG_INIT);
+  board.point([0.4, 1.11], 'C', {}, Board.FLAG_INIT);
+  board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+  board.segment(['B', 'C'], 'L2', {}, Board.FLAG_INIT);
+  board.segment(['C', 'A'], 'L3', {}, Board.FLAG_INIT);
+
+  // steps
+  board.line(['B', 'C'], 'L4');
+  board.circle(['C', 'A'], 'C1');
+  board.intersection(['C1', 'L4', 0], 'E');
+  board.perpendicularBisector(['B', 'E'], 'L5');
+  board.intersection(['L4', 'L5'], 'F');
+  board.circle(['C', 'F'], 'C2');
+  board.intersection(['C2', 'L3', 0], 'G');
+
+  // solution
+  board.line(['F', 'G'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
 export const ITEMS = [
   ['8-4 Regular Octagon (9L)', Theta4_L],
   ['8-4 Regular Octagon (13E)', Theta4_E],
+  ['8-5 Triangle Cleaver (3L)', Theta5_L],
+  ['8-5 Triangle Cleaver (7E)', Theta5_E],
 ];
