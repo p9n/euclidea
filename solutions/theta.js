@@ -171,10 +171,37 @@ function Theta6(e) {
   board.renderAll();
 }
 
+function Theta7(e) {
+  var board = new Board.Board(e, -2.5, 2, -1.5, 2.5, 120);
+
+  // input
+  board.point([-1.8, 0.4], 'A', {}, Board.FLAG_INIT);
+  board.point([-1.1, 1.8], 'B', {}, Board.FLAG_INIT);
+  board.point([-0.24, 1.1], 'C', {}, Board.FLAG_INIT);
+  board.point([0.4, 1], 'D', {}, Board.FLAG_INIT);
+
+  // steps
+  board.perpendicularBisector(['A', 'B'], 'L1');
+  board.perpendicularBisector(['C', 'D'], 'L2');
+  board.intersection(['L1', 'L2'], 'E');
+  board.circle(['E', 'A'], 'C1');
+  board.circle(['E', 'C'], 'C2');
+  board.intersection(['C1', 'L1', 0], 'F');
+  board.intersection(['C2', 'L1', 0], 'G');
+  board.perpendicularBisector(['F', 'G'], 'L3');
+  board.intersection(['L1', 'L3'], 'H');
+
+  // solution
+  board.circle(['E', 'H'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
 export const ITEMS = [
   [8, 4, 'Regular Octagon', '9L', Theta4_L],
   [8, 4, 'Regular Octagon', '13E', Theta4_E],
   [8, 5, 'Triangle Cleaver', '3L', Theta5_L],
   [8, 5, 'Triangle Cleaver', '7E', Theta5_E],
   [8, 6, 'Torricelli Point', '6L 6E', Theta6],
+  [8, 7, 'Circle Equidistant from Four Points', '6L 12E', Theta7],
 ];

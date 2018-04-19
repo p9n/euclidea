@@ -125,10 +125,42 @@ function Lambda3_E(e) {
   board.renderAll();
 }
 
+function Lambda5(e) {
+  var board = new Board.Board(e, -2, 2.5, -1.5, 2.5, 100);
+
+  // input
+  board.point([0.27, 1.51], 'A', {}, Board.FLAG_INIT);
+  board.line([[0, -0.1], [1, -0.1]], 'L1', {}, Board.FLAG_INIT);
+  board.point([0, 0.66], 'B', {visible: false}, Board.FLAG_INIT);
+  board.parallel(['L1', 'B'], 'L2', {}, Board.FLAG_INIT);
+
+  // steps
+  board.glider([0.04, 0.66, 'L2'], 'C');
+  board.glider([1.29, 0.66, 'L2'], 'D');
+  board.line(['A', 'C'], 'L3');
+  board.line(['A', 'D'], 'L4');
+  board.glider([0.4, -0.1, 'L1'], 'E');
+  board.line(['E', 'C'], 'L5');
+  board.line(['E', 'D'], 'L6');
+  board.intersection(['L4', 'L5'], 'F');
+  board.intersection(['L1', 'L3'], 'G');
+  board.line(['F', 'G'], 'L7');
+  board.intersection(['L2', 'L7'], 'H');
+  board.intersection(['L3', 'L6'], 'I');
+  board.line(['H', 'I'], 'L8');
+  board.intersection(['L5', 'L8'], 'J');
+
+  // solution
+  board.line(['A', 'J'], '', {}, Board.FLAG_FINAL);
+  
+  board.renderAll();
+}
+
 export const ITEMS = [
   [11, 1, 'Fourth Proportional', '3E', Lambda1],
   [11, 2, 'Geometric Mean of Segments', '3L', Lambda2_L],
   [11, 2, 'Geometric Mean of Segments', '5E', Lambda2_E],
   [11, 3, 'Golden Section', '4L', Lambda3_L],
   [11, 3, 'Golden Section', '5E', Lambda3_E],
+  [11, 5, 'Third Parallel Line', '7E', Lambda5],
 ];
