@@ -147,8 +147,8 @@ function Theta5_E(e) {
 }
 
 export const ITEMS = [
-  ['8-4 Regular Octagon (9L)', Theta4_L],
-  ['8-4 Regular Octagon (13E)', Theta4_E],
-  ['8-5 Triangle Cleaver (3L)', Theta5_L],
-  ['8-5 Triangle Cleaver (7E)', Theta5_E],
+  [8, 4, 'Regular Octagon', '9L', Theta4_L],
+  [8, 4, 'Regular Octagon', '13E', Theta4_E],
+  [8, 5, 'Triangle Cleaver', '3L', Theta5_L],
+  [8, 5, 'Triangle Cleaver', '7E', Theta5_E],
 ];

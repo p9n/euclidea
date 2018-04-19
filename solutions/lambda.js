@@ -126,9 +126,9 @@ function Lambda3_E(e) {
 }
 
 export const ITEMS = [
-  ['11-1 Fourth Proportional (3E)', Lambda1],
-  ['11-2 Geometric Mean of Segments (3L)', Lambda2_L],
-  ['11-2 Geometric Mean of Segments (5E)', Lambda2_E],
-  ['11-3 Golden Section (4L)', Lambda3_L],
-  ['11-3 Golden Section (5E)', Lambda3_E],
+  [11, 1, 'Fourth Proportional', '3E', Lambda1],
+  [11, 2, 'Geometric Mean of Segments', '3L', Lambda2_L],
+  [11, 2, 'Geometric Mean of Segments', '5E', Lambda2_E],
+  [11, 3, 'Golden Section', '4L', Lambda3_L],
+  [11, 3, 'Golden Section', '5E', Lambda3_E],
 ];

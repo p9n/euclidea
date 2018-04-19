@@ -210,11 +210,11 @@ function Iota10(e) {
 }
 
 export const ITEMS = [
-  ['9-2 Third Proportional (3L 3E)', Iota2],
-  ['9-3 Harmonic Mean of Trapezoid bases (5E)', Iota3],
-  ['9-6 Trisection by Trapezoid Diagonals (5E)', Iota6],
-  ['9-7 Minimum Perimeter - 2 (8E)', Iota7],
-  ['9-8 Harmonic Mean of Segments (4E)', Iota8],
-  ['9-9 Triangle by Angle and Centroid (7E)', Iota9],
-  ['9-10 Triangle Mid-Segment (5E)', Iota10],
+  [9, 2, 'Third Proportional', '3L 3E', Iota2],
+  [9, 3, 'Harmonic Mean of Trapezoid bases', '5E', Iota3],
+  [9, 6, 'Trisection by Trapezoid Diagonals', '5E', Iota6],
+  [9, 7, 'Minimum Perimeter - 2', '8E', Iota7],
+  [9, 8, 'Harmonic Mean of Segments', '4E', Iota8],
+  [9, 9, 'Triangle by Angle and Centroid', '7E', Iota9],
+  [9, 10, 'Triangle Mid-Segment', '5E', Iota10],
 ];
