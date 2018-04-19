@@ -18,7 +18,7 @@ function InitNav() {
     if (last_group != x) {
       last_group = x;
       const header = $('<a></a>');
-      header.text(x + ' - ' + sol.name.match(/[A-Za-z]+/)[0]);
+      header.text(`${x}. ${sol.name.match(/[A-Za-z]+/)[0]}`);
       header.addClass('tab-header');
       header.click(() => $(`a.group-${x}`).toggle());
 
@@ -54,6 +54,12 @@ function HandleHashChange(e) {
     return;
   }
 
+  target.each((i, e) => {
+    e.classList.forEach(c => {
+      if (c.startsWith('group-')) {
+        $(`.${c}`).show();
+      }
+    })});
   $('.active-tab').removeClass('active-tab');
   target.addClass('active-tab');
   target.data('callback')(container);
