@@ -188,6 +188,7 @@ export function SetDefaultOptions() {
   JXG.Options.line.strokeColor = 'darkgrey';
   JXG.Options.perpendicular.strokeColor = 'darkgrey';
   JXG.Options.bisector.strokeColor = 'darkgrey';
+  JXG.Options.parallel.strokeColor = 'darkgrey';
 
   JXG.Options.glider.strokeColor = 'red';
   JXG.Options.glider.fillColor = 'red';

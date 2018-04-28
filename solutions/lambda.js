@@ -156,6 +156,39 @@ function Lambda5(e) {
   board.renderAll();
 }
 
+function Lambda7_L(e) {
+  var board = new Board.Board(e, -0.5, 4, -2, 3, 100);
+
+  // input
+  board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([3.2, 0], 'B', {}, Board.FLAG_INIT);
+  board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+  board.point([1.7, 1.5], 'C', {}, Board.FLAG_INIT);
+  board.parallel(['L1', 'C'], 'LCD_hidden', {visible: false}, Board.FLAG_INIT);
+  board.glider([0.8, 1.5, 'LCD_hidden'], 'D', {color: 'blue'}, Board.FLAG_INIT);
+  board.segment(['B', 'C'], 'L2', {}, Board.FLAG_INIT);
+  board.segment(['C', 'D'], 'L3', {}, Board.FLAG_INIT);
+  board.segment(['D', 'A'], 'L4', {}, Board.FLAG_INIT);
+
+  // steps
+  board.parallel(['L4', 'C'], 'L5');
+  board.intersection(['L5', 'L1'], 'E');
+  board.perpendicularBisector(['A', 'E'], 'L6');
+  board.circle(['B', 'A'], 'C1');
+  board.intersection(['C1', 'L6', 0], 'F');
+  board.circle(['A', 'F'], 'C2');
+  board.intersection(['L1', 'C2', 0], 'G');
+  board.parallel(['L4', 'G'], 'L7');
+  board.intersection(['L2', 'L7'], 'H');
+  board.parallel(['L1', 'H'], 'L8');
+
+  // solution
+  board.intersection(['L4', 'L8'], 'I');
+  board.segment(['H', 'I'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
 export const ITEMS = [
   [11, 1, 'Fourth Proportional', '3E', Lambda1],
   [11, 2, 'Geometric Mean of Segments', '3L', Lambda2_L],
@@ -163,4 +196,5 @@ export const ITEMS = [
   [11, 3, 'Golden Section', '4L', Lambda3_L],
   [11, 3, 'Golden Section', '5E', Lambda3_E],
   [11, 5, 'Third Parallel Line', '7E', Lambda5],
+  [11, 7, 'Geometric Mean of Trapezoid Bases', '6L', Lambda7_L],
 ];
