@@ -74,16 +74,19 @@ function Gamma10(e) {
   board.otherintersection(['C1', 'C2', 'C'], 'D');
   board.circle(['C', 'D'], 'C3');
   board.otherintersection(['C2', 'C3', 'D'], 'E');
+  board.circle(['A', 'E'], 'C4');
+  board.circle(['C', 'B'], 'C5');
+  board.otherintersection(['C2', 'C4', 'E'], 'F');
   board.line(['C', 'E'], 'L1');
-  board.line(['A', 'B'], 'L2');
-  board.intersection(['L1', 'L2'], 'F');
-  board.line(['D', 'F'], 'L3');
-  board.perpendicular(['B', 'L2'], 'L4');
+  board.line(['D', 'F'], 'L2');
+  board.intersection(['C4', 'C5', 1], 'G');
+  board.line(['B', 'G'], 'L3');
 
   // solution
-  board.intersection(['L1', 'L4'], 'G');
-  board.intersection(['L3', 'L4'], 'H');
-  board.polygon(['F', 'G', 'H'], '', {}, Board.FLAG_FINAL);
+  board.intersection(['L1', 'L2'], 'G');
+  board.intersection(['L2', 'L3'], 'H');
+  board.intersection(['L1', 'L3'], 'I');
+  board.polygon(['G', 'H', 'I'], '', {}, Board.FLAG_FINAL);
 
   board.renderAll();
 }
