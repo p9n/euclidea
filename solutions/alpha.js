@@ -442,6 +442,34 @@ function Zeta9(e) {
   board.renderAll();
 }
 
+function Zeta10(e) {
+  var board = new Board.Board(e, -2, 2, -2, 2, 100);
+
+  // input
+  board.point([0, 0], 'O', {}, Board.FLAG_INIT);
+  board.point([0.7, 1.03], 'A', {}, Board.FLAG_INIT);
+  board.point([1.55, 0.93], 'B', {}, Board.FLAG_INIT);
+  board.point([1.61, -0.42], 'C', {}, Board.FLAG_INIT);
+  board.line(['O', 'A'], 'L1', {}, Board.FLAG_INIT);
+  board.line(['O', 'B'], 'L2', {}, Board.FLAG_INIT);
+  board.line(['O', 'C'], 'L3', {}, Board.FLAG_INIT);
+
+  // steps
+  board.point([0, 1], 'D');
+  board.circle(['O', 'D'], 'C1');
+  board.intersection(['L1', 'C1', 1], 'E');
+  board.intersection(['L2', 'C1', 1], 'F');
+  board.line(['E', 'F'], 'L4');
+  board.intersection(['L3', 'L4'], 'G');
+  board.circle(['O', 'G'], 'C2');
+  board.otherintersection(['C2', 'L4', 'G'], 'H');
+
+  // solution
+  board.line(['O', 'H'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
 function Eta3(e) {
   var board = new Board.Board(e, -1.5, 2, -1, 2, 120);
 
@@ -573,6 +601,7 @@ export const ITEMS = [
   [6, 6, 'Translate Segment', '6E', Zeta6],
   [6, 8, 'Hypotenuse and Leg', '9E', Zeta8],
   [6, 9, 'Nine Point Circle', '9E', Zeta9],
+  [6, 10, 'Symmetry of Four Lines', '4E', Zeta10],
   [7, 3, 'Angle of 75°', '3L', Eta3],
   [7, 7, 'Inscribed Circle', '8E', Eta7],
   [7, 8, 'Segment by Midpoint', '5E', Eta8],
