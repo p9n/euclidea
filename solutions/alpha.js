@@ -470,6 +470,43 @@ function Zeta10(e) {
   board.renderAll();
 }
 
+function Zeta11(e) {
+  var board = new Board.Board(e, -2, 3.5, -2, 2, 100);
+
+  // input
+  board.point([-0.39, 0.07], 'A', {}, Board.FLAG_INIT);
+  board.point([0.47, 0.59], 'B', {}, Board.FLAG_INIT);
+  board.point([0.9, 0], 'C', {}, Board.FLAG_INIT);
+
+  // steps
+  board.line(['A', 'C'], 'L1');
+  board.circle(['A', 'C'], 'C1');
+  board.otherintersection(['L1', 'C1', 'C'], 'D');
+  board.line(['B', 'C'], 'L2');
+  board.circle(['B', 'C'], 'C2');
+  board.otherintersection(['L2', 'C2', 'C'], 'E');
+  board.line(['D', 'E'], 'L3');
+  board.otherintersection(['C1', 'C2', 'C'], 'F');
+  board.line(['F', 'A'], 'L4');
+  board.otherintersection(['L4', 'C1', 'F'], 'G');
+  board.line(['C', 'G'], 'L5');
+  board.circle(['C', 'A'], 'C3');
+  board.otherintersection(['C3', 'L1', 'A'], 'H');
+  board.line(['B', 'H'], 'L6');
+  board.circle(['C', 'B'], 'C4');
+  board.otherintersection(['C4', 'L2', 'B'], 'I');
+  board.line(['A', 'I'], 'L7');
+
+  // solution
+  board.intersection(['L3', 'L7'], 'J');
+  board.intersection(['L7', 'L5'], 'K');
+  board.intersection(['L5', 'L6'], 'L');
+  board.intersection(['L6', 'L3'], 'M');
+  board.polygon(['J', 'K', 'L', 'M'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
 function Eta3(e) {
   var board = new Board.Board(e, -1.5, 2, -1, 2, 120);
 
@@ -602,6 +639,7 @@ export const ITEMS = [
   [6, 8, 'Hypotenuse and Leg', '9E', Zeta8],
   [6, 9, 'Nine Point Circle', '9E', Zeta9],
   [6, 10, 'Symmetry of Four Lines', '4E', Zeta10],
+  [6, 11, 'Parallelogram by Three Midpoints', '11E', Zeta11],
   [7, 3, 'Angle of 75°', '3L', Eta3],
   [7, 7, 'Inscribed Circle', '8E', Eta7],
   [7, 8, 'Segment by Midpoint', '5E', Eta8],
