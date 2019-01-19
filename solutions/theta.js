@@ -146,7 +146,7 @@ function Theta5_E(e) {
   board.renderAll();
 }
 
-function Theta6(e) {
+function Theta6_L(e) {
   var board = new Board.Board(e, -2.5, 2, -3, 3, 120);
 
   // input
@@ -160,13 +160,36 @@ function Theta6(e) {
   board.circle(['B', 'A'], 'C2');
   board.intersection(['C1', 'C2', 0], 'D');
   board.line(['C', 'D'], 'L1');
-  board.circle(['A', 'C'], 'C3');
-  board.circle(['C', 'A'], 'C4');
-  board.intersection(['C3', 'C4', 1], 'E');
-  board.line(['B', 'E'], 'L2');
+  board.otherintersection(['C1', 'L1', 'D'], 'E');
+  board.perpendicularBisector(['B', 'E'], 'L2');
 
   // solution
   board.intersection(['L1', 'L2'], 'F', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
+function Theta6_E(e) {
+  var board = new Board.Board(e, -2.5, 2, -3, 3, 120);
+
+  // input
+  board.point([-1, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([1, 0], 'B', {}, Board.FLAG_INIT);
+  board.point([0.4, 1.11], 'C', {}, Board.FLAG_INIT);
+  board.polygon(['A', 'B', 'C'], '', {}, Board.FLAG_INIT);
+
+  // steps
+  board.circle(['A', 'B'], 'C1');
+  board.circle(['B', 'A'], 'C2');
+  board.intersection(['C1', 'C2', 0], 'D');
+  board.line(['C', 'D'], 'L1');
+  board.otherintersection(['C1', 'L1', 'D'], 'E');
+  board.circle(['E', 'A'], 'C3');
+  board.intersection(['C1', 'C3', 1], 'F');
+  board.line(['B', 'F'], 'L2');
+
+  // solution
+  board.intersection(['L1', 'L2'], 'G', {}, Board.FLAG_FINAL);
 
   board.renderAll();
 }
@@ -202,6 +225,7 @@ export const ITEMS = [
   [8, 4, 'Regular Octagon', '13E', Theta4_E],
   [8, 5, 'Triangle Cleaver', '3L', Theta5_L],
   [8, 5, 'Triangle Cleaver', '7E', Theta5_E],
-  [8, 6, 'Torricelli Point', '6L 6E', Theta6],
+  [8, 6, 'Torricelli Point', '4L', Theta6_L],
+  [8, 6, 'Torricelli Point', '5E', Theta6_E],
   [8, 7, 'Circle Equidistant from Four Points', '6L 12E', Theta7],
 ];
