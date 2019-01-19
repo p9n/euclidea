@@ -562,6 +562,36 @@ function Eta7(e) {
 }
 
 function Eta8(e) {
+  var board = new Board.Board(e, -3.5, 2, -1, 2.5, 100);
+
+  // input
+  board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([-0.56, 1], 'B', {}, Board.FLAG_INIT);
+  board.point([1, 0], 'C', {}, Board.FLAG_INIT);
+  board.line(['A', 'C'], 'L1', {}, Board.FLAG_INIT);
+  board.parallel(['B', 'L1'], 'L2', {}, Board.FLAG_INIT);
+  board.line(['A', 'B'], 'L3', {}, Board.FLAG_INIT);
+
+  // steps
+  board.circle(['B', 'A'], 'C1');
+  board.intersection(['C1', 'L2', 1], 'D');
+  board.circle(['A', 'D'], 'C2');
+  board.otherintersection(['C1', 'L3', 'A'], 'E');
+  board.circle(['E', 'A'], 'C3');
+  board.intersection(['C2', 'C3', 0], 'F');
+  board.intersection(['C2', 'C3', 1], 'G');
+  board.line(['F', 'G'], 'L4');
+  board.line(['A', 'D'], 'L5');
+
+  // solution
+  board.intersection(['L4', 'L5'], 'H');
+  board.intersection(['L4', 'L3'], 'I');
+  board.circle(['H', 'I'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
+function Eta9(e) {
   var board = new Board.Board(e, -0.5, 3, -1, 2, 120);
 
   // input
@@ -642,6 +672,7 @@ export const ITEMS = [
   [6, 11, 'Parallelogram by Three Midpoints', '11E', Zeta11],
   [7, 3, 'Angle of 75°', '3L', Eta3],
   [7, 7, 'Inscribed Circle', '8E', Eta7],
-  [7, 8, 'Segment by Midpoint', '5E', Eta8],
+  [7, 8, 'Circle Tangent to Three Lines', '6E', Eta8],
+  [7, 9, 'Segment by Midpoint', '5E', Eta9],
   [7, 11, 'Excircle', '8E', Eta11],
 ];
