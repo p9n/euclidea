@@ -1,1 +1,1 @@
-[link](http://aoyama-nanami.github.io/euclidea)
+[link](http://p9n.github.io/euclidea)
