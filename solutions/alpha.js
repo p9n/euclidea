@@ -189,6 +189,75 @@ function Delta9(e) {
   board.renderAll();
 }
 
+function Delta11_L(e) {
+  var board = new Board.Board(e, -3, 3, -3, 3, 100);
+
+  // input
+  board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([1, 0], 'B', {}, Board.FLAG_INIT);
+
+  // steps
+  board.circle(['A', 'B'], 'C1');
+  board.circle(['B', 'A'], 'C2');
+  board.intersection(['C1', 'C2', 0], 'C');
+  board.intersection(['C1', 'C2', 1], 'D');
+  board.circle(['C', 'D'], 'C3');
+  board.circle(['D', 'A'], 'C4');
+  board.intersection(['C1', 'C4', 1], 'E');
+  board.circle(['E', 'B'], 'C5');
+  board.intersection(['C5', 'C3', 1], 'F');
+  board.circle(['A', 'F'], 'C6');
+
+  // solution
+  board.intersection(['C2', 'C6', 0], 'G', {}, Board.FLAG_FINAL);
+  board.circle(['G', 'B'], 'C7');
+  board.intersection(['C7', 'C1', 0], 'H', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
+function Delta11_V(e) {
+  var board = new Board.Board(e, -3, 3, -3, 3, 100);
+
+  // input
+  board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([1, 0], 'B', {}, Board.FLAG_INIT);
+
+  // steps
+  board.circle(['A', 'B'], 'C1');
+  board.circle(['B', 'A'], 'C2');
+  board.intersection(['C1', 'C2', 0], 'C');
+  board.intersection(['C1', 'C2', 1], 'D');
+  board.circle(['C', 'D'], 'C3');
+  board.circle(['D', 'A'], 'C4');
+  board.intersection(['C1', 'C4', 1], 'E');
+  board.circle(['E', 'B'], 'C5');
+  board.intersection(['C5', 'C3', 1], 'F');
+  board.circle(['A', 'F'], 'C6');
+
+  // solution
+  board.intersection(['C2', 'C6', 0], 'G', {}, Board.FLAG_FINAL);
+  board.circle(['G', 'B'], 'C7');
+  board.intersection(['C7', 'C1', 0], 'H', {}, Board.FLAG_FINAL);
+
+  board.intersection(['C2', 'C6', 1], 'I', {}, Board.FLAG_FINAL);
+  board.circle(['I', 'B'], 'C8');
+  board.intersection(['C8', 'C1', 1], 'J', {}, Board.FLAG_FINAL);
+
+  board.circle(['J', 'I'], 'C9');
+  board.intersection(['C9', 'C6', 1], 'K');
+  board.circle(['K', 'I'], 'C10');
+  board.intersection(['C1', 'C10', 1], 'L');
+  board.circle(['L', 'A'], 'C11');
+  board.intersection(['C7', 'C10', 0], 'M');
+  board.circle(['A', 'M'], 'C12');
+  board.intersection(['C11', 'C12', 0], 'N', {}, Board.FLAG_FINAL);
+  board.circle(['B', 'N'], 'C13');
+  board.intersection(['C12', 'C13', 0], 'O', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
 function Epsilon3(e) {
   var board = new Board.Board(e, -1.5, 2.5, -1.5, 1.5, 100);
 
@@ -660,6 +729,8 @@ export const ITEMS = [
   [4, 2, 'Angle of 60° - 2', '4E', Delta2],
   [4, 4, 'Equilateral Triangle in Circle', '6E', Delta4],
   [4, 9, 'Square by Opposite Midpoints', '10E', Delta9],
+  [4, 11, 'Square by Two Vertices', '7L', Delta11_L],
+  [4, 11, 'Square by Two Vertices', '3V', Delta11_V],
   [5, 3, 'Line Equidistant from Two Points - 1', '4E', Epsilon3],
   [5, 5, 'Hash', '4E', Epsilon5],
   [5, 7, 'Line Equidistant from Two Lines', '5E', Epsilon7],
