@@ -220,6 +220,33 @@ function Theta7(e) {
   board.renderAll();
 }
 
+function Theta10_E(e) {
+  var board = new Board.Board(e, -2.5, 2, -1.5, 2.5, 120);
+
+  // input
+  board.point([-2.25, -0.5], 'A', {}, Board.FLAG_INIT);
+  board.point([-1, -0.5], 'B', {}, Board.FLAG_INIT);
+  board.point([0.3, 1], 'C', {}, Board.FLAG_INIT);
+  board.point([0.3, 2], 'D', {}, Board.FLAG_INIT);
+  board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+  board.circle(['C', 'D'], 'C1', {}, Board.FLAG_INIT);
+
+  // steps
+  board.circle(['C', 'B'], 'C2');
+  board.line(['A', 'B'], 'L2');
+  board.otherintersection(['C2', 'L2', 'B'], 'E');
+  board.perpendicularBisector(['A', 'E'], 'L3');
+  board.intersection(['L3', 'C1', 1], 'F');
+  board.line(['C', 'F'], 'L4');
+  board.otherintersection(['L4', 'C1', 'F'], 'G');
+  board.intersection(['L3', 'C1', 0], 'H');
+
+  // solution
+  board.segment(['G', 'H'], 'L5', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
 export const ITEMS = [
   [8, 4, 'Regular Octagon', '9L', Theta4_L],
   [8, 4, 'Regular Octagon', '13E', Theta4_E],
@@ -228,4 +255,5 @@ export const ITEMS = [
   [8, 6, 'Torricelli Point', '4L', Theta6_L],
   [8, 6, 'Torricelli Point', '5E', Theta6_E],
   [8, 7, 'Circle Equidistant from Four Points', '6L 12E', Theta7],
+  [8, 10, 'Chord Parallel to Segment', '7E', Theta10_E],
 ];
