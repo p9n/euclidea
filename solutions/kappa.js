@@ -159,7 +159,7 @@ function Kappa3_E(e) {
   board.renderAll();
 }
 
-function Kappa4(e) {
+function Kappa4_L(e) {
   var board = new Board.Board(e, -2.5, 2.5, -2, 2, 100);
 
   // input
@@ -179,6 +179,38 @@ function Kappa4(e) {
 
   // solution
   board.segment(['D', 'E'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
+function Kappa4_E(e) {
+  var board = new Board.Board(e, -2.5, 2.5, -2, 2, 100);
+
+  // input
+  board.point([0, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([-0.8, 0.6], 'B', {}, Board.FLAG_INIT);
+  board.point([-1.5, -0.1], 'C', {}, Board.FLAG_INIT);
+  board.segment(['B', 'C'], 'L1', {}, Board.FLAG_INIT);
+
+  // steps
+  board.circle(['B', 'A'], 'C1');
+  board.circle(['A', 'B'], 'C2');
+  board.intersection(['C1', 'C2', 0], 'D');
+  board.intersection(['C1', 'C2', 1], 'E');
+  board.line(['D', 'E'], 'L2');
+  board.line(['A', 'B'], 'L3');
+  board.intersection(['L2', 'L3'], 'F');
+  board.circle(['F', 'A'], 'C3');
+  board.intersection(['L2', 'C3', 1], 'G');
+  board.circle(['G', 'A'], 'C4');
+  board.intersection(['C4', 'L1', 0], 'H');
+  board.otherintersection(['C4', 'C2', 'B'], 'I');
+  board.line(['H', 'I'], 'L4');
+  board.circle(['A', 'C'], 'C5');
+  board.intersection(['C5', 'L4', 0], 'J');
+
+  // solution
+  board.segment(['I', 'J'], '', {}, Board.FLAG_FINAL);
 
   board.renderAll();
 }
@@ -610,7 +642,8 @@ export const ITEMS = [
   [10, 2, 'Outer Tangent', '8E', Kappa2_E],
   [10, 3, 'Inner Tangent', '6L', Kappa3_L],
   [10, 3, 'Inner Tangent', '8E', Kappa3_E],
-  [10, 4, 'Rotation 90°', '5L 9E', Kappa4],
+  [10, 4, 'Rotation 90°', '5L', Kappa4_L],
+  [10, 4, 'Rotation 90°', '9E', Kappa4_E],
   [10, 5, 'Rotation 60°', '4L 4E', Kappa5],
   [10, 6, 'Segment Trisection', '5L', Kappa6_L],
   [10, 6, 'Segment Trisection', '6E', Kappa6_E],
