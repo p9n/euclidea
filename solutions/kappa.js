@@ -406,55 +406,6 @@ function Kappa8_E(e) {
 }
 
 function Kappa9_L(e) {
-  var board = new Board.Board(e, -3, 3, -3, 3, 100);
-
-  // input
-  board.point([-1, 0], 'A', {}, Board.FLAG_INIT);
-  board.point([1, 0], 'B', {}, Board.FLAG_INIT);
-  board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
-
-  // steps
-  board.perpendicularBisector(['A', 'B'], 'L2');
-  board.intersection(['L1', 'L2'], 'C');
-  board.copySegment(['A', 'B', 'C'], 'C1');
-  board.intersection(['C1', 'L2', 1], 'D');
-  board.line(['A', 'D'], 'L3');
-  board.otherintersection(['C1', 'L3', 'D'], 'E');
-  board.otherintersection(['C1', 'L2', 'D'], 'F');
-  board.angleBisector(['B', 'F', 'E'], 'L4');
-
-  // solution
-  board.intersection(['L1', 'L4'], 'G', {}, Board.FLAG_FINAL);
-
-  board.renderAll();
-}
-
-function Kappa9_E(e) {
-  var board = new Board.Board(e, -2, 4, -3, 3, 100);
-
-  // input
-  board.point([-1, 0], 'A', {}, Board.FLAG_INIT);
-  board.point([-0.3, 0], 'B', {}, Board.FLAG_INIT);
-  board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
-
-  // steps
-  board.line(['A', 'B'], 'L2');
-  board.circle(['A', 'B'], 'C1');
-  board.otherintersection(['C1', 'L2', 'B'], 'C');
-  board.circle(['B', 'C'], 'C2');
-  board.otherintersection(['C2', 'L2', 'C'], 'D');
-  board.circle(['D', 'A'], 'C3');
-  board.intersection(['C1', 'C3', 0], 'E');
-  board.intersection(['C1', 'C3', 1], 'F');
-  board.line(['E', 'F'], 'L3');
-
-  // solution
-  board.intersection(['L1', 'L3'], 'G', {}, Board.FLAG_FINAL);
-
-  board.renderAll();
-}
-
-function Kappa10_L(e) {
   var board = new Board.Board(e, -1.5, 3, -3, 1.5, 100);
 
   // input
@@ -484,7 +435,7 @@ function Kappa10_L(e) {
   board.renderAll();
 }
 
-function Kappa10_E(e) {
+function Kappa9_E(e) {
   var board = new Board.Board(e, -1, 3, -1, 2, 100);
 
   // input
@@ -514,7 +465,7 @@ function Kappa10_E(e) {
   board.renderAll();
 }
 
-function Kappa11_L(e) {
+function Kappa10_L(e) {
   var board = new Board.Board(e, -2, 3, -1.5, 1.5, 100);
 
   // input
@@ -540,7 +491,7 @@ function Kappa11_L(e) {
   board.renderAll();
 }
 
-function Kappa11_E(e) {
+function Kappa10_E(e) {
   var board = new Board.Board(e, -2, 3, -2, 2, 100);
 
   // input
@@ -567,7 +518,7 @@ function Kappa11_E(e) {
   board.renderAll();
 }
 
-function Kappa12_L(e) {
+function Kappa11_L(e) {
   var board = new Board.Board(e, -2, 3.5, -2.5, 2.5, 100);
 
   // input
@@ -598,7 +549,7 @@ function Kappa12_L(e) {
   board.renderAll();
 }
 
-function Kappa12_E(e) {
+function Kappa11_E(e) {
   var board = new Board.Board(e, -2, 3.5, -2.5, 2.5, 100);
 
   // input
@@ -650,12 +601,10 @@ export const ITEMS = [
   [10, 7, 'Segment Trisection*', '8E', Kappa7],
   [10, 8, 'Chord Trisection', '3L', Kappa8_L],
   [10, 8, 'Chord Trisection', '3E', Kappa8_E],
-  [10, 9, 'Ratio 1 to 5', '4L', Kappa9_L],
-  [10, 9, 'Ratio 1 to 5', '5E', Kappa9_E],
-  [10, 10, 'Three Circles - 1', '7L', Kappa10_L],
-  [10, 10, 'Three Circles - 1', '10E', Kappa10_E],
-  [10, 11, 'Chord Bisection', '4L', Kappa11_L],
-  [10, 11, 'Chord Bisection', '5E', Kappa11_E],
-  [10, 12, 'Three Circles - 2', '9L', Kappa12_L],
-  [10, 12, 'Three Circles - 2', '14E', Kappa12_E],
+  [10, 9, 'Three Circles - 1', '7L', Kappa9_L],
+  [10, 9, 'Three Circles - 1', '10E', Kappa9_E],
+  [10, 10, 'Secant Bisection', '4L', Kappa10_L],
+  [10, 10, 'Secant Bisection', '5E', Kappa10_E],
+  [10, 11, 'Three Circles - 2', '9L', Kappa11_L],
+  [10, 11, 'Three Circles - 2', '14E', Kappa11_E],
 ];
