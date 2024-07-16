@@ -220,6 +220,37 @@ function Theta7(e) {
   board.renderAll();
 }
 
+function Theta9_E(e) {
+  var board = new Board.Board(e, -3.5, 3.5, -1.5, 2.5, 100);
+
+  // input
+  board.point([-1, 0], 'A', {}, Board.FLAG_INIT);
+  board.point([0, 0], 'B', {}, Board.FLAG_INIT);
+  board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+
+  // steps
+  board.line(['A', 'B'], 'L2');
+  board.circle(['B', 'A'], 'C1');
+  board.otherintersection(['C1', 'L2', 'A'], 'C');
+  board.circle(['A', 'C'], 'C2');
+  board.circle(['C', 'A'], 'C3');
+  board.intersection(['C2', 'C3', 0], 'D');
+  board.line(['B', 'D'], 'L3');
+  board.intersection(['C1', 'L3', 1], 'E');
+  board.otherintersection(['C2', 'L2', 'C'], 'F');
+  board.line(['E', 'F'], 'L4');
+  board.otherintersection(['C2', 'L4', 'F'], 'G');
+  board.line(['A', 'G'], 'L5');
+
+  // solution
+  board.intersection(['L3', 'L5'], 'H');
+  board.segment(['A', 'B'], '', {}, Board.FLAG_FINAL);
+  board.segment(['A', 'H'], '', {}, Board.FLAG_FINAL);
+  board.segment(['B', 'H'], '', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
 function Theta10_E(e) {
   var board = new Board.Board(e, -2.5, 2, -1.5, 2.5, 120);
 
@@ -255,5 +286,6 @@ export const ITEMS = [
   [8, 6, 'Torricelli Point', '4L', Theta6_L],
   [8, 6, 'Torricelli Point', '5E', Theta6_E],
   [8, 7, 'Circle Equidistant from Four Points', '6L 12E', Theta7],
+  [8, 9, 'Egyptian Triangle by Side of Length 4', '7E', Theta9_E],
   [8, 10, 'Chord Parallel to Segment', '7E', Theta10_E],
 ];
