@@ -643,7 +643,7 @@ export const ITEMS = [
   [10, 3, 'Inner Tangent', '6L', Kappa3_L],
   [10, 3, 'Inner Tangent', '8E', Kappa3_E],
   [10, 4, 'Rotation 90°', '5L', Kappa4_L],
-  [10, 4, 'Rotation 90°', '9E', Kappa4_E],
+  [10, 4, 'Rotation 90°', '8E', Kappa4_E],
   [10, 5, 'Rotation 60°', '4L 4E', Kappa5],
   [10, 6, 'Segment Trisection', '5L', Kappa6_L],
   [10, 6, 'Segment Trisection', '6E', Kappa6_E],
