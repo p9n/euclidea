@@ -587,6 +587,40 @@ function Kappa11_E(e) {
   board.renderAll();
 }
 
+function Kappa12_E(e) {
+  var board = new Board.Board(e, -6, 4, -6, 4, 50);
+
+  // input
+  board.point([-1, 1], 'A', {}, Board.FLAG_INIT);
+  board.point([2, -2], 'B', {}, Board.FLAG_INIT);
+  board.segment(['A', 'B'], 'L1', {}, Board.FLAG_INIT);
+  board.point([-2, -2.1], 'C', {}, Board.FLAG_INIT);
+  board.copySegment(['A', 'B', 'C'], 'C_hidden', {visible: false});
+  board.circle(['C', 'C_hidden'], 'C0', {visible: false});
+  board.glider([1, 1, 'L1'], 'E', {}, Board.FLAG_INIT);
+  board.line(['C', 'E'], 'L_hidden', {visible: false}, Board.FLAG_INIT);
+  // TODO: FLAG_INIT can not depend on previous objects, fix this
+  board.intersection(['L_hidden', 'C0', 0], 'D', {color: 'blue'});
+  board.segment(['C', 'D'], 'L2', {color: 'blue'});
+
+  // steps
+  board.circle(['C', 'A'], 'C1');
+  board.intersection(['C1', 'L2'], 'F');
+  board.circle(['A', 'C'], 'C2');
+  board.intersection(['C2', 'L1'], 'G');
+  board.circle(['G', 'F'], 'C3');
+  board.otherintersection(['C1', 'C3', 'F'], 'H');
+  board.line(['A', 'H'], 'L3');
+  board.intersection(['C1', 'C2', 0], 'I');
+  board.intersection(['C1', 'C2', 1], 'J');
+  board.line(['I', 'J'], 'L4');
+
+  // solution
+  board.intersection(['L3', 'L4'], 'H', {}, Board.FLAG_FINAL);
+
+  board.renderAll();
+}
+
 export const ITEMS = [
   [10, 1, 'Tangent of Circle', '5E', Kappa1],
   [10, 2, 'Outer Tangent', '6L', Kappa2_L],
@@ -607,4 +641,5 @@ export const ITEMS = [
   [10, 10, 'Secant Bisection', '5E', Kappa10_E],
   [10, 11, 'Three Circles - 2', '9L', Kappa11_L],
   [10, 11, 'Three Circles - 2', '14E', Kappa11_E],
+  [10, 12, 'Center of Rotation', '5E', Kappa12_E],
 ];

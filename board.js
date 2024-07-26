@@ -149,7 +149,9 @@ export class Board {
   }
 
   copySegment(parents, name='', attributes={}, flag=0) {
-    const dotted_line_attr = {withLabel: false, dash: 2, color: 'grey'};
+    let dotted_line_attr = {withLabel: false, dash: 2, color: 'grey'};
+    if (attributes.visible === false) dotted_line_attr = {visible: false};
+
     var [a, b, c] = parents;
     const segment_id = Board.uniqueId_();
     this.segment([a, b], segment_id, dotted_line_attr, FLAG_SKIP);
